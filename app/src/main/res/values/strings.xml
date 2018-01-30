@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Shapi</string>
+    <string name="first_hello">Bienvenu(e)</string>
+    <string name="quot_hello">Salut,</string>
+</resources>
