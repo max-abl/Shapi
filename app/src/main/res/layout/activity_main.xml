@@ -17,11 +17,11 @@
         android:layout_marginTop="32dp"
         android:textAlignment="center"
         android:textSize="30dp"
+        android:text="@string/first_hello"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/first_hello" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_morpho"
@@ -30,7 +30,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="Poids : 68 | Taille : 182"
+        android:text="@string/str_tv_morpho"
         android:textAlignment="center"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
