@@ -5,14 +5,9 @@
 package com.andro.prolapso.shapi.controler;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.DatabaseUtils;
-import android.database.sqlite.SQLiteCursorDriver;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.TableLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
