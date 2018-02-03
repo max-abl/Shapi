@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andro.prolapso.shapi.main">
-
+    tools:context="com.andro.prolapso.shapi.MainActivity">
 
     <TextView
         android:id="@+id/tv_bv"
@@ -16,8 +15,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:textAlignment="center"
-        android:textSize="30dp"
-        android:text="@string/first_hello"
+        android:textSize="30sp"
+        android:text="@string/hello"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,9 +29,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="@string/str_tv_morpho"
+        android:text="@string/main_tv_morpho"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +44,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Programmes d'entrainement"
+        android:text="@string/main_training_programs"
         app:layout_constraintBottom_toTopOf="@+id/btn_exo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -57,23 +56,22 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Exercices"
-        app:layout_constraintBottom_toTopOf="@+id/btn_parametre"
+        android:text="@string/main_exercices"
+        app:layout_constraintBottom_toTopOf="@+id/btn_params"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_parametre"
+        android:id="@+id/btn_params"
         android:layout_width="301dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Profil"
+        android:text="@string/main_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </android.support.constraint.ConstraintLayout>

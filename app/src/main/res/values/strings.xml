@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Shapi</string>
-    <string name="first_hello">Bienvenu(e)</string>
-    <string name="quot_hello">Salut,</string>
-    <string name="str_tv_morpho">Poids : %poids% | Taille : %taille%</string>
+
+    <!-- MainActivity-->
+    <string name="hello">Bienvenu(e)</string>
+    <string name="main_tv_morpho">Poids : %poids% | Taille : %taille%</string>
+    <string name="main_training_programs">Programmes d\'entraînement</string>
+    <string name="main_exercices">Exercices</string>
+    <string name="main_profile">Profil</string>
+
 </resources>

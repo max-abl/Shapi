@@ -1,8 +1,4 @@
-/**
- * Created by Maxime on 03/02/2018.
- */
-
-package com.andro.prolapso.shapi.controler;
+package com.andro.prolapso.shapi.controllers;
 
 import android.content.ContentValues;
 import android.database.DatabaseUtils;
@@ -15,12 +11,11 @@ import java.util.Date;
 
 public class BddClass {
 
-
     // La base de données
     private SQLiteDatabase db;
 
     // Nom de la base
-    private static final String DBNAME = "SHAPI";
+    private static final String DB_NAME = "SHAPI";
 
     // Creation de la base de données
     private static final String requeteCreation = "CREATE TABLE IF NOT EXISTS user" +
@@ -51,7 +46,7 @@ public class BddClass {
     public BddClass() {
 
         // Ouverture de la base
-        db = SQLiteDatabase.openOrCreateDatabase(DBNAME, null);
+        db = SQLiteDatabase.openOrCreateDatabase(DB_NAME, null);
 
         // On cree la base si elle n'existe pas
         //db.execSQL(requeteCreation);
