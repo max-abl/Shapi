@@ -2,7 +2,7 @@
  * Created by Maxime on 03/02/2018.
  */
 
-package com.andro.prolapso.shapi;
+package com.andro.prolapso.shapi.controler;
 
 import android.content.ContentValues;
 import android.database.Cursor;
