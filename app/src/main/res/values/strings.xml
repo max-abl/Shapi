@@ -7,5 +7,6 @@
     <string name="main_training_programs">Programmes d\'entraînement</string>
     <string name="main_exercices">Exercices</string>
     <string name="main_profile">Profil</string>
+    <string name="titre_edit_activity">Modification du profil</string>
 
 </resources>
