@@ -2,7 +2,7 @@
     <string name="app_name">Shapi</string>
 
     <!-- MainActivity-->
-    <string name="hello">Bienvenu(e)</string>
+    <string name="hello">Bienvenue</string>
     <string name="main_tv_morpho">Poids : %poids% | Taille : %taille%</string>
     <string name="main_training_programs">Programmes d\'entraînement</string>
     <string name="main_exercices">Exercices</string>

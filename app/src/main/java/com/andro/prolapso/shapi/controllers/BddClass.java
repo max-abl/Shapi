@@ -42,7 +42,7 @@ public class BddClass {
     private static final String requeteGetUser = "SELECT id_user FROM user LIMIT 1";
 
 
-    // -- CONTRUSTOR --
+    // -- CONSTRUCTOR --
     public BddClass() {
 
         // Ouverture de la base
