@@ -13,8 +13,8 @@
     <!-- EditProfileActivity -->
     <string name="title_edit_profile_activity">Modification du profil</string>
     <string name="edit_profile_save">Sauvegarder</string>
-    <string name="edit_profile_weight">Poids: </string>
-    <string name="edit_profile_height">Taille: (en cm)</string>
+    <string name="edit_profile_weight">Poids (en kg): </string>
+    <string name="edit_profile_height">Taille (en cm):</string>
     <string name="edit_profile_firstname">Prénom: </string>
 
     <!-- ProgrammesActivity -->

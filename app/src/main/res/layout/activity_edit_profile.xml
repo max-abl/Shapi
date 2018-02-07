@@ -22,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName" />
 
         <TextView
             android:layout_width="match_parent"
@@ -35,8 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName" />
 
         <TextView
             android:layout_width="match_parent"
@@ -48,8 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberSigned"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            android:inputType="numberSigned" />
 
         <TextView
             android:layout_width="match_parent"
@@ -61,8 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionDone" />
 
     </LinearLayout>
 
@@ -70,23 +69,23 @@
         android:id="@+id/tableRow"
         android:layout_width="340dp"
         android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
         android:layout_margin="8dp"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/cancel"/>
+            android:text="@string/cancel" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="saveProfile"
-            android:text="@string/edit_profile_save"/>
+            android:text="@string/edit_profile_save" />
 
     </LinearLayout>
 

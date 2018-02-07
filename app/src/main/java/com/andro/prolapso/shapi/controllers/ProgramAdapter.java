@@ -20,7 +20,8 @@ public class ProgramAdapter extends ArrayAdapter<Program> {
         mContext = context;
     }
 
-    @Override @NonNull
+    @Override
+    @NonNull
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View v = convertView;
         ProgramHolder holder;

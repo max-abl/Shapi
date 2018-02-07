@@ -11,7 +11,7 @@ public class User {
     private String height;
     private String weight;
 
-    public User(String n, String fn, String h, String w){
+    public User(String n, String fn, String h, String w) {
         name = n;
         firstName = fn;
         height = h;

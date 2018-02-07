@@ -59,12 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Met a jour la vue en fonction des valeurs en bdd
-    private void updateView(){
+    private void updateView() {
 
         HashMap<String, String> results;
         results = dbuser.getProfile();
 
-        if(results.get(BddUserClass.NAME) != "nom"){
+        if (results.get(BddUserClass.NAME) != "nom") {
 
             // Set message Bienvenue
             tv_bv.setText("Bienvenue, " + results.get(BddUserClass.FIRSTNAME));
