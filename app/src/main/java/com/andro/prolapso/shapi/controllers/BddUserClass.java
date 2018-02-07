@@ -13,13 +13,13 @@ public class BddUserClass {
     private static final String TABLE = "user";
 
     // Champs
-    private static final String NOM = "nom";
-    private static final String PRENOM = "prenom";
-    private static final String DATE_NAISSANCE = "date_nais";
-    private static final String POIDS = "poids";
-    private static final String TAILLE = "taille";
-    private static final String FLAG = "flag";
-    private static final String DATE_CREATION = "date_creation";
+    public static final String NOM = "nom";
+    public static final String PRENOM = "prenom";
+    public static final String DATE_NAISSANCE = "date_nais";
+    public static final String POIDS = "poids";
+    public static final String TAILLE = "taille";
+    public static final String FLAG = "flag";
+    public static final String DATE_CREATION = "date_creation";
 
 
     // Requetes
@@ -39,7 +39,7 @@ public class BddUserClass {
             DATE_CREATION + "=?";
 
 
-    BddUserClass() {
+    public BddUserClass() {
         mBddClass = new BddClass();
     }
 
@@ -64,6 +64,7 @@ public class BddUserClass {
     // Mise a jour des informations personnel
     // En parametre : hashMap clef = nom de la colonne
     public void updateProfile(HashMap<String, String> params) {
+
         ContentValues cv = new ContentValues();
 
         cv.put(NOM, params.get(NOM));
