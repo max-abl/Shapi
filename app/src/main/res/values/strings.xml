@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Shapi</string>
     <string name="cancel">Annuler</string>
+    <string name="text_name_field">Nom: </string>
 
     <!-- MainActivity-->
     <string name="hello">Bienvenue</string>
@@ -10,11 +11,15 @@
     <string name="main_profile">Editer le profil</string>
 
     <!-- EditProfileActivity -->
-    <string name="edit_activity_title">Modification du profil</string>
+    <string name="title_edit_profile_activity">Modification du profil</string>
     <string name="edit_profile_save">Sauvegarder</string>
     <string name="edit_profile_weight">Poids: </string>
-    <string name="edit_profile_height">Taille: (en cm) </string>
-    <string name="edit_profile_name">Nom: </string>
+    <string name="edit_profile_height">Taille: (en cm)</string>
     <string name="edit_profile_firstname">Prénom: </string>
-    <string name="title_activity_programmes">ProgrammesActivity</string>
+
+    <!-- ProgrammesActivity -->
+    <string name="title_activity_programmes">Programmes</string>
+
+    <!-- CreateProgramActivity -->
+    <string name="title_activity_create_program">Nouveau Programme</string>
 </resources>

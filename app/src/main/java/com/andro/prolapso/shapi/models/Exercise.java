@@ -1,12 +1,15 @@
 package com.andro.prolapso.shapi.models;
 
-public class Program {
+public class Exercise {
     private final int mId;
     private final String mName;
+    private final Muscle mMuscle;
 
-    Program(int id, String name) {
+
+    public Exercise(int id, String name, Muscle muscle) {
         mId = id;
         mName = name;
+        mMuscle = muscle;
     }
 
     // Getters
@@ -16,5 +19,9 @@ public class Program {
 
     public String getName() {
         return mName;
+    }
+
+    public Muscle getMuscle() {
+        return mMuscle;
     }
 }

@@ -1,9 +1,9 @@
 package com.andro.prolapso.shapi.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,22 +15,26 @@ import com.andro.prolapso.shapi.models.Program;
 import java.util.ArrayList;
 
 public class ProgrammesActivity extends AppCompatActivity {
+    private static final int REQUEST_NEW_PROGRAM = 124;
+
+    private ArrayList<Program> mProgramList;
+    private ProgramAdapter mProgramAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_programmes);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         final ListView programListView = findViewById(R.id.list_programs);
-        final ArrayList<Program> programList = new ArrayList<>();  // TODO:  =  get Programs From DB
+        mProgramList = new ArrayList<>();  // TODO:  =  get Programs From DB
         // TODO: custom layout for each item
-        final ProgramAdapter programAdapter = new ProgramAdapter(this, android.R.layout.simple_list_item_1, programList);
+        mProgramAdapter = new ProgramAdapter(this, android.R.layout.simple_list_item_1, mProgramList);
         programListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Program selectedProgram = programList.get(i);
+                Program selectedProgram = mProgramList.get(i);
             }
         });
 
@@ -38,9 +42,20 @@ public class ProgrammesActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Call CreateProgramActivity here
+                startActivityForResult(new Intent(ProgrammesActivity.this, CreateProgramActivity.class), REQUEST_NEW_PROGRAM);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_NEW_PROGRAM) {
+            if (resultCode == RESULT_OK) {
+                // TODO: Update mProgramList
+
+                mProgramAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
 }
