@@ -45,6 +45,7 @@ public class EditProfileActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setResult(RESULT_CANCELED);
                 finish();
             }
         });
@@ -70,6 +71,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         dbuser.updateProfile(hm);
 
+        setResult(RESULT_OK);
+        finish();
     }
 
 
