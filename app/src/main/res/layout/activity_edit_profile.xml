@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/edit_profile_name" />
+            android:text="@string/text_name_field" />
 
         <EditText
             android:id="@+id/edit_name"
