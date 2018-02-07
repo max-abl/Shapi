@@ -1,79 +1,90 @@
 package com.andro.prolapso.shapi.controllers;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 
 import java.util.HashMap;
 
-public class BddUserClass {
-    // Variable mBddClass
-    private BddClass mBddClass;
+public class BddUserClass extends BddClass {
 
     // Table
-    private static final String TABLE = "user";
+    private static final String TABLE_NAME = "user";
 
     // Champs
-    public static final String NOM = "nom";
-    public static final String PRENOM = "prenom";
-    public static final String DATE_NAISSANCE = "date_nais";
-    public static final String POIDS = "poids";
-    public static final String TAILLE = "taille";
+    public static final String NAME = "name";
+    public static final String FIRSTNAME = "firstname";
+    public static final String WEIGHT = "weight";
+    public static final String HEIGHT = "height";
     public static final String FLAG = "flag";
-    public static final String DATE_CREATION = "date_creation";
 
 
-    // Requetes
-    private static final String reqGetProfile =
-            " SELECT " + NOM + "," + PRENOM + "," + DATE_NAISSANCE + "," + POIDS + "," +
-                    TAILLE + "," + FLAG + "," + DATE_CREATION +
-                    " FROM " + TABLE +
-                    " LIMIT 1 ";
-
-    private static final String reqUpdateProfile = "UPDATE " + TABLE +
-            " SET " + NOM + "=?, " +
-            PRENOM + "=?, " +
-            DATE_NAISSANCE + "=?, " +
-            POIDS + "=?, " +
-            TAILLE + "=?, " +
-            FLAG + "=?, " +
-            DATE_CREATION + "=?";
+    // Creation
+    private static final String CREATE_USER = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
+            " id_user        INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
+            " name           VARCHAR(40)            ," +
+            " firstname      VARCHAR(40)            ," +
+            " weight         INTEGER                ," +
+            " height         INTEGER                ," +
+            " flag           VARCHAR(2)             " +
+            ");";
 
 
-    public BddUserClass() {
-        mBddClass = new BddClass();
+    //Suppresion
+    public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
+
+    public BddUserClass(Context pContext) {
+        super(pContext);
     }
 
+
+    // Données de l'utilisateur
     public HashMap<String, String> getProfile() {
+
+        open();
+
+        // HashMap Results
         HashMap<String, String> results = new HashMap<>();
 
-        Cursor cursor = mBddClass.getdb().rawQuery(reqGetProfile, null);
+        // Query Select
+        Cursor cursor = mDb.rawQuery("select " + NAME + ", " + FIRSTNAME + ", " + WEIGHT + ", " +
+                HEIGHT + ", " + FLAG + " from " + TABLE_NAME, new String[]{});
+
+        // Cursor
         cursor.moveToFirst();
 
-        results.put(NOM, cursor.getString(cursor.getColumnIndex(NOM)));
-        results.put(PRENOM, cursor.getString(cursor.getColumnIndex(PRENOM)));
-        results.put(DATE_NAISSANCE, cursor.getString(cursor.getColumnIndex(DATE_NAISSANCE)));
-        results.put(POIDS, cursor.getString(cursor.getColumnIndex(POIDS)));
-        results.put(TAILLE, cursor.getString(cursor.getColumnIndex(TAILLE)));
-        results.put(FLAG, cursor.getString(cursor.getColumnIndex(FLAG)));
-        results.put(DATE_CREATION, cursor.getString(cursor.getColumnIndex(DATE_CREATION)));
+        // Results
+        results.put(NAME, cursor.getString(0));
+        results.put(FIRSTNAME, cursor.getString(1));
+        results.put(WEIGHT, cursor.getString(2));
+        results.put(HEIGHT, cursor.getString(3));
+        results.put(FLAG, cursor.getString(4));
 
+        // Close
         cursor.close();
+
+        close();
+
+        // Return results
         return results;
     }
 
-    // Mise a jour des informations personnel
+
+    // Mise a jour des informations personnelles
     // En parametre : hashMap clef = nom de la colonne
     public void updateProfile(HashMap<String, String> params) {
 
-        ContentValues cv = new ContentValues();
+        open();
 
-        cv.put(NOM, params.get(NOM));
-        cv.put(PRENOM, params.get(PRENOM));
-        cv.put(DATE_NAISSANCE, params.get(DATE_NAISSANCE));
-        cv.put(POIDS, params.get(POIDS));
-        cv.put(TAILLE, params.get(TAILLE));
+        ContentValues cv = new ContentValues();
+        cv.put(NAME, params.get(NAME));
+        cv.put(FIRSTNAME, params.get(FIRSTNAME));
+        cv.put(WEIGHT, params.get(WEIGHT));
+        cv.put(HEIGHT, params.get(HEIGHT));
         cv.put(FLAG, "O");
 
-        mBddClass.getdb().update(TABLE, cv, "true", null);
+        mDb.update(TABLE_NAME, cv, "true", null);
+
+        close();
     }
 }

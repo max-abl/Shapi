@@ -20,7 +20,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         // Bdd
-        dbuser = new BddUserClass();
+        dbuser = new BddUserClass(this);
 
         // HashMap
         HashMap<String, String> results;
@@ -33,10 +33,10 @@ public class EditProfileActivity extends AppCompatActivity {
         editWeight = findViewById(R.id.edit_weight);
 
         // On pre-remplis les champs
-        editName.setText(results.get(BddUserClass.NOM));
-        editFirstName.setText(results.get(BddUserClass.PRENOM));
-        editHeight.setText(results.get(BddUserClass.TAILLE));
-        editWeight.setText(results.get(BddUserClass.POIDS));
+        editName.setText(results.get(BddUserClass.NAME));
+        editFirstName.setText(results.get(BddUserClass.FIRSTNAME));
+        editHeight.setText(results.get(BddUserClass.HEIGHT));
+        editWeight.setText(results.get(BddUserClass.WEIGHT));
 
         // Btn annuler
         Button btnCancel = findViewById(R.id.btn_cancel);
@@ -63,10 +63,10 @@ public class EditProfileActivity extends AppCompatActivity {
         HashMap<String, String> hm = new HashMap<String, String>();
 
         // Creation des valeurs dans le HMAP
-        hm.put(BddUserClass.NOM, name);
-        hm.put(BddUserClass.PRENOM, first_name);
-        hm.put(BddUserClass.TAILLE, height);
-        hm.put(BddUserClass.POIDS, weight);
+        hm.put(BddUserClass.NAME, name);
+        hm.put(BddUserClass.FIRSTNAME, first_name);
+        hm.put(BddUserClass.HEIGHT, height);
+        hm.put(BddUserClass.WEIGHT, weight);
 
         dbuser.updateProfile(hm);
 
