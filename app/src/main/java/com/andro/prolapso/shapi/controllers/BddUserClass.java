@@ -6,9 +6,8 @@ import android.database.Cursor;
 import java.util.HashMap;
 
 public class BddUserClass {
-
-    // Variable db
-    private BddClass db;
+    // Variable mBddClass
+    private BddClass mBddClass;
 
     // Table
     private static final String TABLE = "user";
@@ -41,14 +40,13 @@ public class BddUserClass {
 
 
     BddUserClass() {
-        db = new BddClass();
+        mBddClass = new BddClass();
     }
 
     public HashMap<String, String> getProfile() {
+        HashMap<String, String> results = new HashMap<>();
 
-        HashMap<String, String> results = new HashMap<String, String>();
-
-        Cursor cursor = db.getdb().rawQuery(reqGetProfile, null);
+        Cursor cursor = mBddClass.getdb().rawQuery(reqGetProfile, null);
         cursor.moveToFirst();
 
         results.put(NOM, cursor.getString(cursor.getColumnIndex(NOM)));
@@ -59,14 +57,13 @@ public class BddUserClass {
         results.put(FLAG, cursor.getString(cursor.getColumnIndex(FLAG)));
         results.put(DATE_CREATION, cursor.getString(cursor.getColumnIndex(DATE_CREATION)));
 
+        cursor.close();
         return results;
     }
-
 
     // Mise a jour des informations personnel
     // En parametre : hashMap clef = nom de la colonne
     public void updateProfile(HashMap<String, String> params) {
-
         ContentValues cv = new ContentValues();
 
         cv.put(NOM, params.get(NOM));
@@ -76,9 +73,6 @@ public class BddUserClass {
         cv.put(TAILLE, params.get(TAILLE));
         cv.put(FLAG, "O");
 
-        db.getdb().update(TABLE, cv, "true", null);
-
+        mBddClass.getdb().update(TABLE, cv, "true", null);
     }
-
-
 }

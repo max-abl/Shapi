@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     public void editProfile(View v) {
         Intent intent = new Intent(this, EditProfileActivity.class);
         intent.putExtra(EXTRA_MESSAGE, "EditProfileActivity");

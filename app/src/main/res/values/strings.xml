@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">Shapi</string>
+    <string name="cancel">Annuler</string>
 
     <!-- MainActivity-->
     <string name="hello">Bienvenue</string>
     <string name="main_tv_morpho">Poids : %poids% | Taille : %taille%</string>
     <string name="main_training_programs">Programmes d\'entraînement</string>
     <string name="main_exercices">Exercices</string>
-    <string name="main_profile">Profil</string>
-    <string name="titre_edit_activity">Modification du profil</string>
+    <string name="main_profile">Editer le profil</string>
 
+    <!-- EditProfileActivity -->
+    <string name="edit_activity_title">Modification du profil</string>
+    <string name="edit_profile_save">Sauvegarder</string>
+    <string name="edit_profile_weight">Poids: </string>
+    <string name="edit_profile_height">Taille: (en cm) </string>
+    <string name="edit_profile_name">Nom: </string>
+    <string name="edit_profile_firstname">Prénom: </string>
+    <string name="title_activity_programmes">ProgrammesActivity</string>
 </resources>

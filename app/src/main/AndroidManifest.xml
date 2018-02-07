@@ -16,8 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".views.EditProfileActivity"/>
+        <activity
+            android:name=".views.EditProfileActivity"
+            android:label="@string/edit_activity_title" />
+        <activity
+            android:name=".views.ProgrammesActivity"
+            android:label="@string/title_activity_programmes"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

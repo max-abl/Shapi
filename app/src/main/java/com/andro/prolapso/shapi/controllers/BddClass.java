@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class BddClass {
-
     // La base de données
     private SQLiteDatabase db;
 
@@ -141,9 +140,7 @@ public class BddClass {
         return DatabaseUtils.queryNumEntries(db, "id_user");
     }
 
-
     public SQLiteDatabase getdb(){
         return db;
     }
-
 }

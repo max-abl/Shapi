@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="text_size">15sp</dimen>
+    <dimen name="app_padding">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>
