@@ -29,7 +29,7 @@ public class BddHandler extends SQLiteOpenHelper {
             " name          VARCHAR(40)" +
             ");";
 
-    private static final String createTableMuscle = "CERATE TABLE IF NOT EXISTS muscle(" +
+    private static final String createTableMuscle = "CREATE TABLE IF NOT EXISTS muscle(" +
             " id_muscle     INTEGER         NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name          VARCHAR(40)," +
             " id_type       INTEGER," +
@@ -100,7 +100,7 @@ public class BddHandler extends SQLiteOpenHelper {
 
     // Comptage du nombre d'user
     private long countUser(SQLiteDatabase db) {
-        return DatabaseUtils.queryNumEntries(db, "id_user");
+        return DatabaseUtils.queryNumEntries(db, "user");
     }
 
 }

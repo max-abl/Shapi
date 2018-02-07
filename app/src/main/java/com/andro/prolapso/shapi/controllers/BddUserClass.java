@@ -83,7 +83,7 @@ public class BddUserClass extends BddClass {
         cv.put(HEIGHT, params.get(HEIGHT));
         cv.put(FLAG, "O");
 
-        mDb.update(TABLE_NAME, cv, "true", null);
+        mDb.update(TABLE_NAME, cv, "1=1", null);
 
         close();
     }
