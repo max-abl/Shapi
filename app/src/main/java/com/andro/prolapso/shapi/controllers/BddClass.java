@@ -76,9 +76,6 @@ public class BddClass {
             " FOREIGN KEY(id_exo) REFERENCES exercice(id_exo)" +
             ");";
 
-    // Recherche de l'utilisateur
-    private static final String requeteGetUser = "SELECT id_user FROM user LIMIT 1";
-
 
     // -- CONSTRUCTOR --
     public BddClass() {
@@ -142,6 +139,11 @@ public class BddClass {
     // Comptage du nombre d'user
     private long countUser() {
         return DatabaseUtils.queryNumEntries(db, "id_user");
+    }
+
+
+    public SQLiteDatabase getdb(){
+        return db;
     }
 
 }
