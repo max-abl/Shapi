@@ -19,7 +19,7 @@ public class BddHandler extends SQLiteOpenHelper {
             " flag           VARCHAR(2)             " +
             ");";
 
-    private static final String createTableProgramme = "CREATE TABLE IF NOT EXISTS programme(" +
+    private static final String createTableProgramme = "CREATE TABLE IF NOT EXISTS program(" +
             " id_program     INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name           VARCHAR(40)" +
             ");";
@@ -36,7 +36,7 @@ public class BddHandler extends SQLiteOpenHelper {
             " FOREIGN KEY(id_type) REFERENCES type(id_type)" +
             ");";
 
-    private static final String createTableExercice = "CREATE TABLE IF NOT EXISTS exercice(" +
+    private static final String createTableExercice = "CREATE TABLE IF NOT EXISTS exercise(" +
             " id_exo         INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name           VARCHAR(40)," +
             " description    VARCHAR(200)," +
@@ -44,16 +44,23 @@ public class BddHandler extends SQLiteOpenHelper {
             " FOREIGN KEY(id_muscle) REFERENCES muscle(id_muscle)" +
             ");";
 
-    private static final String createTableProgExo = "CREATE TABLE IF NOT EXISTS prog_exo(" +
+    private static final String createTableProgExo = "CREATE TABLE IF NOT EXISTS progexo(" +
             " id_program    INTEGER             ," +
             " id_exo        INTEGER             ," +
             " time          INTEGER             ," +
             " repetition    INTEGER             ," +
             " serie         INTEGER             ," +
             " weight        INTEGER             ," +
-            " FOREIGN KEY(id_program) REFERENCES programme(id_program)," +
-            " FOREIGN KEY(id_exo) REFERENCES exercice(id_exo)" +
+            " FOREIGN KEY(id_program) REFERENCES program(id_program)," +
+            " FOREIGN KEY(id_exo) REFERENCES exercise(id_exo)" +
             ");";
+
+    public static final String TABLE_DROP_PROGRAM = "DROP TABLE IF EXISTS " + "program" + ";";
+    public static final String TABLE_DROP_USER = "DROP TABLE IF EXISTS " + "user" + ";";
+    public static final String TABLE_DROP_EXO = "DROP TABLE IF EXISTS " + "exercise" + ";";
+    public static final String TABLE_DROP_MUSCLE = "DROP TABLE IF EXISTS " + "muscle" + ";";
+    public static final String TABLE_DROP_TYPE = "DROP TABLE IF EXISTS " + "type" + ";";
+    public static final String TABLE_DROP_PROGEXO= "DROP TABLE IF EXISTS " + "progexo" + ";";
 
 
     public BddHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -77,6 +84,12 @@ public class BddHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(TABLE_DROP_USER);
+        db.execSQL(TABLE_DROP_PROGEXO);
+        db.execSQL(TABLE_DROP_EXO);
+        db.execSQL(TABLE_DROP_MUSCLE);
+        db.execSQL(TABLE_DROP_TYPE);
+        db.execSQL(TABLE_DROP_PROGRAM);
         onCreate(db);
     }
 
