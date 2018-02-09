@@ -47,7 +47,7 @@ class BddHandler extends SQLiteOpenHelper {
     private static final String createTableProgExo = "CREATE TABLE IF NOT EXISTS progexo(" +
             " id_program    INTEGER             ," +
             " id_exo        INTEGER             ," +
-            " time          INTEGER             ," +
+            " time          VARCHAR(10)         ," +
             " repetition    INTEGER             ," +
             " serie         INTEGER             ," +
             " weight        INTEGER             ," +
