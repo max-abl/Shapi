@@ -39,6 +39,7 @@ public class BddHandler extends SQLiteOpenHelper {
     private static final String createTableExercice = "CREATE TABLE IF NOT EXISTS exercice(" +
             " id_exo         INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name           VARCHAR(40)," +
+            " description    VARCHAR(200)," +
             " id_muscle      INTEGER," +
             " FOREIGN KEY(id_muscle) REFERENCES muscle(id_muscle)" +
             ");";
