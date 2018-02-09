@@ -4,7 +4,7 @@ public class Program {
     private final int mId;
     private final String mName;
 
-    Program(int id, String name) {
+    public Program(int id, String name) {
         mId = id;
         mName = name;
     }

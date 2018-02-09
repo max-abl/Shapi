@@ -4,94 +4,118 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.andro.prolapso.shapi.models.Program;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BddProgramClass extends BddClass {
 
-    // Table
+    /*
+    *  TABLES
+    *
+    * */
     private static final String TABLE_NAME = "program";
 
-    // Champs
+    /*
+    *  CHAMPS
+    *
+    * */
     public static final String ID_PROGRAM = "id_program";
     public static final String NAME = "name";
 
-    // Creation
+    /*
+    *  CREATION
+    *
+    * */
     private static final String CREATE_USER = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
             " id_program        INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name           VARCHAR(40)            " +
             ");";
 
 
-    //Suppresion
+    /*
+    *  SUPPRESSION
+    *
+    * */
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
+
+    /*
+    *  REQUETE
+    *
+    * */
+    // Select tous les programmes d'entrainement
+    public static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM  + ", " + NAME + " FROM " + TABLE_NAME;
+
+    // Se
+    public static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " =?";
+    /*
+    *  CONSTRUCTOR
+    *
+    * */
     public BddProgramClass(Context pContext) {
         super(pContext);
     }
 
-    // Retour en tableau de HashMap tous les programmes
-    public HashMap<String, String>[] getAllPrograms() {
 
-        // Open bdd
+    /*
+    *  Renvoie tous les programmes
+    *
+    * */
+    public ArrayList<Program> getAllPrograms() {
+
+        // Open bdd and cursor
         open();
+        Cursor cursor = mDb.rawQuery(querySelectAllPrograms, new String[]{});
 
         // HashMap Results
-        HashMap<String, String> array[] = new HashMap[500];
-
-        // Query Select
-        Cursor cursor = mDb.rawQuery("select " + NAME + ", " + ID_PROGRAM + " from " +
-                TABLE_NAME, new String[]{});
-
-
-        int counter = 0;
+        ArrayList<Program> results = new ArrayList<>();
 
         // Results
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
-                    HashMap<String, String> results = new HashMap<>();
-                    results.put(ID_PROGRAM, cursor.getString(1));
-                    results.put(NAME, cursor.getString(0));
-                    counter++;
-                    array[counter] = results;
+                    results.add(new Program(
+                            cursor.getInt(0),
+                            cursor.getString(1)
+                    ));
                 } while (cursor.moveToNext());
             }
         }
         // Close
         cursor.close();
-
-        // Clode bdd
         close();
 
         // Return results
-        return array;
+        return results;
     }
 
 
     // Retour en HashMap le programme dont l'ID est specifié
-    public HashMap<String, String> getProgramsById(String id) {
+    public Program getProgramsById(String id) {
 
         // Open bdd
         open();
 
         // HashMap Results
-        HashMap<String, String> results = new HashMap<>();
+        Program results = null;
 
         // Query Select
-        Cursor cursor = mDb.rawQuery("SELECT " + NAME + ", " + ID_PROGRAM + " FROM " +
-                TABLE_NAME + " WHERE id_program ='" + id + "'", new String[]{});
+        Cursor cursor = mDb.rawQuery(querySelectProgramById, new String[]{id});
 
         // Results
         if (cursor != null) {
             if (cursor.moveToFirst()) {
-                results.put(ID_PROGRAM, cursor.getString(1));
-                results.put(NAME, cursor.getString(0));
+                results = new Program(
+                        cursor.getInt(0),
+                        cursor.getString(1)
+                );
             }
         }
-        // Close
-        cursor.close();
 
-        // Clode bdd
+        // Close cursor and bdd
+        cursor.close();
         close();
 
         // Return results
