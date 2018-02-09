@@ -9,62 +9,41 @@ import com.andro.prolapso.shapi.models.Program;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BddProgramClass extends BddClass {
+class BddProgramClass extends BddClass {
 
-    /*
-    *  TABLES
-    *
-    * */
+    // TABLES
     private static final String TABLE_NAME = "program";
 
-    /*
-    *  CHAMPS
-    *
-    * */
-    public static final String ID_PROGRAM = "id_program";
-    public static final String NAME = "name";
+    // CHAMPS
+    private static final String ID_PROGRAM = "id_program";
+    private static final String NAME = "name";
 
-    /*
-    *  CREATION
-    *
-    * */
+    //  CREATION
     private static final String CREATE_USER = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
             " id_program        INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name           VARCHAR(40)            " +
             ");";
 
 
-    /*
-    *  SUPPRESSION
-    *
-    * */
+    // SUPPRESSION
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
 
-    /*
-    *  REQUETE
-    *
-    * */
+    // REQUETE
     // Select tous les programmes d'entrainement
-    public static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME;
+    private static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME;
 
     // Select un programme via l'ID
-    public static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " =?";
+    private static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " =?";
 
 
-    /*
-    *  CONSTRUCTOR
-    *
-    * */
+    // CONSTRUCTOR
     public BddProgramClass(Context pContext) {
         super(pContext);
     }
 
 
-    /*
-    *  Renvoie tous les programmes
-    *
-    * */
+    // Renvoie tous les programmes
     public ArrayList<Program> getAllPrograms() {
 
         // Open bdd and cursor
@@ -84,9 +63,9 @@ public class BddProgramClass extends BddClass {
                     ));
                 } while (cursor.moveToNext());
             }
+            cursor.close();
         }
         // Close
-        cursor.close();
         close();
 
         // Return results
@@ -99,7 +78,6 @@ public class BddProgramClass extends BddClass {
     *
     * */
     public Program getProgramsById(String id) {
-
         // Open bdd
         open();
 
@@ -117,16 +95,14 @@ public class BddProgramClass extends BddClass {
                         cursor.getString(1)
                 );
             }
+            cursor.close();
         }
 
-        // Close cursor and bdd
-        cursor.close();
+        // Close bdd
         close();
 
-        // Return results
         return results;
     }
-
 
     /*
     *  Mise a jour du nom du programme
@@ -134,10 +110,8 @@ public class BddProgramClass extends BddClass {
     *  En parametre HashMap avec :
     *  "ID" = Le numero du programme a changer
     *  Les autres clef = nom de la colonne
-    *
-    * */
+    */
     public void updateProgram(HashMap<String, String> params) {
-
         open();
 
         ContentValues cv = new ContentValues();
@@ -149,10 +123,7 @@ public class BddProgramClass extends BddClass {
     }
 
 
-    /*
-    *  Ajoute un programme
-    *
-    * */
+    // Ajoute un programme
     public void addProgram(String nom) {
 
         // Ouvre la bdd

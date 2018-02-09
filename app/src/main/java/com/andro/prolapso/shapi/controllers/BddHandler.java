@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class BddHandler extends SQLiteOpenHelper {
+class BddHandler extends SQLiteOpenHelper {
 
     // Creation de la base de données
     private static final String createUser = "CREATE TABLE IF NOT EXISTS user(" +
@@ -55,12 +55,12 @@ public class BddHandler extends SQLiteOpenHelper {
             " FOREIGN KEY(id_exo) REFERENCES exercise(id_exo)" +
             ");";
 
-    public static final String TABLE_DROP_PROGRAM = "DROP TABLE IF EXISTS " + "program" + ";";
-    public static final String TABLE_DROP_USER = "DROP TABLE IF EXISTS " + "user" + ";";
-    public static final String TABLE_DROP_EXO = "DROP TABLE IF EXISTS " + "exercise" + ";";
-    public static final String TABLE_DROP_MUSCLE = "DROP TABLE IF EXISTS " + "muscle" + ";";
-    public static final String TABLE_DROP_TYPE = "DROP TABLE IF EXISTS " + "type" + ";";
-    public static final String TABLE_DROP_PROGEXO= "DROP TABLE IF EXISTS " + "progexo" + ";";
+    private static final String TABLE_DROP_PROGRAM = "DROP TABLE IF EXISTS " + "program" + ";";
+    private static final String TABLE_DROP_USER = "DROP TABLE IF EXISTS " + "user" + ";";
+    private static final String TABLE_DROP_EXO = "DROP TABLE IF EXISTS " + "exercise" + ";";
+    private static final String TABLE_DROP_MUSCLE = "DROP TABLE IF EXISTS " + "muscle" + ";";
+    private static final String TABLE_DROP_TYPE = "DROP TABLE IF EXISTS " + "type" + ";";
+    private static final String TABLE_DROP_PROGEXO= "DROP TABLE IF EXISTS " + "progexo" + ";";
 
 
     public BddHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

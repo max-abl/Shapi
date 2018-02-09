@@ -25,7 +25,7 @@ public class EditProfileActivity extends AppCompatActivity {
         dbuser = new BddUserClass(this);
 
         // HashMap
-        HashMap<String, String> results;
+        final HashMap<String, String> results;
         results = dbuser.getProfile();
 
         // Champs
@@ -41,7 +41,7 @@ public class EditProfileActivity extends AppCompatActivity {
         editWeight.setText(results.get(BddUserClass.WEIGHT));
 
         // Btn annuler
-        Button btnCancel = findViewById(R.id.btn_cancel);
+        final Button btnCancel = findViewById(R.id.btn_cancel);
 
         // Listener boutton annuler
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class EditProfileActivity extends AppCompatActivity {
         String weight = editWeight.getText().toString();
 
         // Creation du hashmap
-        HashMap<String, String> hm = new HashMap<String, String>();
+        HashMap<String, String> hm = new HashMap<>();
 
         // Creation des valeurs dans le HMAP
         hm.put(BddUserClass.NAME, name);

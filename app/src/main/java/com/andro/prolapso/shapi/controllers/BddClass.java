@@ -3,27 +3,23 @@ package com.andro.prolapso.shapi.controllers;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-/**
- * Created by Maxime on 07/02/2018.
- */
+abstract class BddClass {
 
-public class BddClass {
+    private final static int VERSION = 1;
+    private final static String NOM = "shapi.db";
+    SQLiteDatabase mDb = null;
+    private BddHandler mHandler = null;
 
-    protected final static int VERSION = 1;
-    protected final static String NOM = "shapi.db";
-    protected SQLiteDatabase mDb = null;
-    protected BddHandler mHandler = null;
-
-    public BddClass(Context pContext) {
-        this.mHandler = new BddHandler(pContext, NOM, null, VERSION);
+    BddClass(Context context) {
+        this.mHandler = new BddHandler(context, NOM, null, VERSION);
     }
 
-    public SQLiteDatabase open() {
+    SQLiteDatabase open() {
         mDb = mHandler.getWritableDatabase();
         return mDb;
     }
 
-    public void close() {
+    void close() {
         mDb.close();
     }
 

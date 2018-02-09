@@ -4,39 +4,30 @@ import android.content.Context;
 import android.database.Cursor;
 import java.util.ArrayList;
 
-public class BddExerciseClass extends BddClass {
+class BddExerciseClass extends BddClass {
 
 
-    /*
-    *  TABLES
-    *
-    * */
+    // TABLES
     private static final String EXERCICE_TABLE_NAME = "exercice";
     private static final String TYPE_TABLE_NAME = "type";
     private static final String MUSCLE_TABLE_NAME = "muscle";
 
 
-    /*
-    *  CHAMPS
-    *
-    * */
-    public static final String EXO_ID = "id_exo";
-    public static final String EXO_NAME = "name";
-    public static final String EXO_ID_MUSCLE = "id_muscle";
-    public static final String EXO_DESCRIPTION = "description";
+    // CHAMPS
+    private static final String EXO_ID = "id_exo";
+    private static final String EXO_NAME = "name";
+    private static final String EXO_ID_MUSCLE = "id_muscle";
+    private static final String EXO_DESCRIPTION = "description";
 
-    public static final String TYPE_ID = "id_type";
-    public static final String TYPE_NAME = "name";
+    private static final String TYPE_ID = "id_type";
+    private static final String TYPE_NAME = "name";
 
-    public static final String MUSCLE_ID = "id_muscle";
-    public static final String MUSCLE_NAME = "name";
-    public static final String MUSCLE_ID_TYPE = "id_type";
+    private static final String MUSCLE_ID = "id_muscle";
+    private static final String MUSCLE_NAME = "name";
+    private static final String MUSCLE_ID_TYPE = "id_type";
 
 
-    /*
-    *  REQUETE CREATION
-    *
-    * */
+    // REQUETE CREATION
     private static final String CREATE_TABLE_TYPE = "CREATE TABLE IF NOT EXISTS type(" +
             " id_type       INTEGER         NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name          VARCHAR(40)" +
@@ -58,46 +49,34 @@ public class BddExerciseClass extends BddClass {
             ");";
 
 
-    /*
-    *  REQUETE SUPPRESSION
-    *
-    * */
+    // REQUETE SUPPRESSION
     public static final String TABLE_DROP_EXO = "DROP TABLE IF EXISTS " + EXERCICE_TABLE_NAME + ";";
     public static final String TABLE_DROP_MUSCLE = "DROP TABLE IF EXISTS " + MUSCLE_TABLE_NAME + ";";
     public static final String TABLE_DROP_TYPE = "DROP TABLE IF EXISTS " + TYPE_TABLE_NAME + ";";
 
 
-    /*
-    *  REQUETES
-    *
-    * */
+    // REQUETES
     // Tous les exercices
-    public static final String querySelectAllExecises = "SELECT " + EXO_ID + ", " + EXO_DESCRIPTION + ", E." + EXO_NAME + ", M." + MUSCLE_NAME + ", T." + TYPE_NAME + " " +
+    private static final String querySelectAllExecises = "SELECT " + EXO_ID + ", " + EXO_DESCRIPTION + ", E." + EXO_NAME + ", M." + MUSCLE_NAME + ", T." + TYPE_NAME + " " +
             "FROM " + EXERCICE_TABLE_NAME + " E, " + MUSCLE_TABLE_NAME + " M, " + TYPE_TABLE_NAME + " T " +
             "WHERE " + EXO_ID_MUSCLE + " = " + MUSCLE_ID + " " +
             "AND " + MUSCLE_ID_TYPE + " = " + TYPE_ID;
 
 
     // Exercice par ID
-    public static final String querySelectExeciseById = "SELECT " + EXO_ID + ", " + EXO_DESCRIPTION + ", E." + EXO_NAME + ", M." + MUSCLE_NAME + ", T." + TYPE_NAME + " " +
+    private static final String querySelectExeciseById = "SELECT " + EXO_ID + ", " + EXO_DESCRIPTION + ", E." + EXO_NAME + ", M." + MUSCLE_NAME + ", T." + TYPE_NAME + " " +
             "FROM " + EXERCICE_TABLE_NAME + " E, " + MUSCLE_TABLE_NAME + " M, " + TYPE_TABLE_NAME + " T " +
             "WHERE " + EXO_ID_MUSCLE + " = " + MUSCLE_ID + " " +
             "AND " + MUSCLE_ID_TYPE + " = " + TYPE_ID + " " +
             "AND " + EXO_ID + " =?";
 
 
-    /*
-    *  CONSTRUCTOR
-    *
-    * */
+    // CONSTRUCTOR
     public BddExerciseClass(Context pContext) {
         super(pContext);
     }
 
-    /*
-    *  Fonction donnant tous les exercices en base
-    *
-    * */
+    // Fonction donnant tous les exercices en base
     public ArrayList<Exercise> getAllExercise() {
 
         // Open bdd and cursor
@@ -120,10 +99,10 @@ public class BddExerciseClass extends BddClass {
                     ));
                 } while (cursor.moveToNext());
             }
+            cursor.close();
         }
 
         // Close
-        cursor.close();
         close();
 
         // Return results
@@ -131,10 +110,7 @@ public class BddExerciseClass extends BddClass {
     }
 
 
-    /*
-    *  Fonction retournant un exercice spécifique donné par son ID
-    *
-    * */
+    // Fonction retournant un exercice spécifique donné par son ID
     public Exercise getExerciseById(String id) {
 
         // Open bdd and cursor
@@ -155,9 +131,10 @@ public class BddExerciseClass extends BddClass {
                         cursor.getString(4)
                 );
             }
+            cursor.close();
         }
-        // Close bdd and cursor
-        cursor.close();
+
+        // Close bdd
         close();
 
         // Return results

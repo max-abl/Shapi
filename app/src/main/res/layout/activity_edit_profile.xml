@@ -61,12 +61,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:imeOptions="actionDone" />
+            android:imeOptions="actionDone"
+            android:digits="0123456789."
+            android:inputType="numberDecimal"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/tableRow"
         android:layout_width="340dp"
         android:layout_height="49dp"
         android:layout_alignParentBottom="true"

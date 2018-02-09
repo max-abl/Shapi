@@ -16,7 +16,7 @@ public class BddUserClass extends BddClass {
     public static final String FIRSTNAME = "firstname";
     public static final String WEIGHT = "weight";
     public static final String HEIGHT = "height";
-    public static final String FLAG = "flag";
+    private static final String FLAG = "flag";
 
 
     // Creation

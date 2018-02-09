@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.andro.prolapso.shapi.R;
@@ -64,16 +63,15 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> results;
         results = dbuser.getProfile();
 
-        if (results.get(BddUserClass.NAME) != "nom") {
+        if (!results.get(BddUserClass.NAME).equals("nom")) {
 
             // Set message Bienvenue
-            tv_bv.setText("Bienvenue, " + results.get(BddUserClass.FIRSTNAME));
+            tv_bv.setText(getString(R.string.hello_user, results.get(BddUserClass.FIRSTNAME)));
 
             // Set message morpho
-            String text_morpho = tv_morpho.getText().toString();
-            String text_morpho_alt = text_morpho.replace("%poids%", results.get(BddUserClass.WEIGHT));
-            text_morpho = text_morpho_alt.replace("%taille%", results.get(BddUserClass.HEIGHT));
-            tv_morpho.setText(text_morpho);
+            tv_morpho.setText(getString(R.string.main_tv_morpho,
+                    results.get(BddUserClass.WEIGHT),
+                    results.get(BddUserClass.HEIGHT)));
         }
     }
 
