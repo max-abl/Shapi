@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/app_padding"
+    tools:context="com.andro.prolapso.shapi.views.AboutActivity">
+
+    <TextView
+        android:id="@+id/text_about_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:text="@string/about_version"
+        android:layout_alignParentTop="true"
+        android:minHeight="@dimen/about_min_height"/>
+
+    <TextView
+        android:id="@+id/text_about_made"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:text="@string/about_made_by"
+        android:layout_below="@id/text_about_version"
+        android:layout_marginTop="@dimen/about_margin"
+        android:layout_marginBottom="@dimen/about_margin"
+        android:minHeight="@dimen/about_min_height"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/text_about_made"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="@dimen/about_margin"
+            android:layout_marginStart="@dimen/about_margin"
+            android:text="@string/maxime"
+            android:minHeight="@dimen/about_min_height"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="@dimen/about_margin"
+            android:layout_marginStart="@dimen/about_margin"
+            android:text="@string/diego"
+            android:minHeight="@dimen/about_min_height"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="@dimen/about_margin"
+            android:layout_marginStart="@dimen/about_margin"
+            android:text="@string/lancelot"
+            android:minHeight="@dimen/about_min_height"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_marginLeft="@dimen/about_margin"
+            android:layout_marginStart="@dimen/about_margin"
+            android:text="@string/kevin"
+            android:minHeight="@dimen/about_min_height"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

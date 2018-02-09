@@ -7,7 +7,7 @@
     tools:context="com.andro.prolapso.shapi.views.MainActivity">
 
     <TextView
-        android:id="@+id/tv_bv"
+        android:id="@+id/text_hello"
         android:layout_width="288dp"
         android:layout_height="49dp"
         android:layout_marginEnd="16dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_morpho"
+        android:id="@+id/text_morpho"
         android:layout_width="286dp"
         android:layout_height="29dp"
         android:layout_marginEnd="8dp"
@@ -32,9 +32,10 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bv" />
+        app:layout_constraintTop_toBottomOf="@+id/text_hello" />
 
     <Button
+        android:id="@+id/btn_programs"
         android:layout_width="305dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -46,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_morpho"
+        app:layout_constraintTop_toBottomOf="@+id/text_morpho"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button

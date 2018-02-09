@@ -9,7 +9,7 @@ import com.andro.prolapso.shapi.models.Program;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-class BddProgramClass extends BddClass {
+public class BddProgramClass extends BddClass {
 
     // TABLES
     private static final String TABLE_NAME = "program";
@@ -34,12 +34,12 @@ class BddProgramClass extends BddClass {
     private static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME;
 
     // Select un programme via l'ID
-    private static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " =?";
+    private static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " = ?";
 
 
     // CONSTRUCTOR
-    public BddProgramClass(Context pContext) {
-        super(pContext);
+    public BddProgramClass(Context context) {
+        super(context);
     }
 
 
@@ -117,15 +117,14 @@ class BddProgramClass extends BddClass {
         ContentValues cv = new ContentValues();
         cv.put(NAME, params.get(NAME));
 
-        mDb.update(TABLE_NAME, cv, "id_program=?", new String[]{params.get("ID")});
+        mDb.update(TABLE_NAME, cv, "id_program = ?", new String[]{params.get("ID")});
 
         close();
     }
 
 
     // Ajoute un programme
-    public void addProgram(String nom) {
-
+    public Program addProgram(String nom) {
         // Ouvre la bdd
         open();
 
@@ -134,7 +133,22 @@ class BddProgramClass extends BddClass {
         cv.put(NAME, nom);
 
         // Insert les données dans la table
-        mDb.insert(TABLE_NAME, null, cv);
+        long newId = mDb.insert(TABLE_NAME, null, cv);
+
+        // Ferme la bdd
+        close();
+
+        System.out.println(newId);
+
+        return new Program((int) newId, nom);
+    }
+
+    // Supprime un programme
+    public void deleteProgram(int id) {
+        // Ouvre la bdd
+        open();
+
+        // TODO
 
         // Ferme la bdd
         close();
