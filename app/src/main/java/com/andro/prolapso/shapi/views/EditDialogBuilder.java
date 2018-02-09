@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import com.andro.prolapso.shapi.R;
 
-class EditDialogBuilder extends AlertDialog.Builder {
+public class EditDialogBuilder extends AlertDialog.Builder {
 
     EditDialogBuilder(final ProgrammesActivity activity) {
         super(activity);

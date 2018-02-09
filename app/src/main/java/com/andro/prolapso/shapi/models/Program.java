@@ -1,18 +1,21 @@
 package com.andro.prolapso.shapi.models;
 
+import com.andro.prolapso.shapi.controllers.BddProgexoClass;
+
 import java.util.ArrayList;
 
 public class Program {
+
+    private BddProgexoClass bdd;
+
     private final int mId;
     private final String mName;
-    private final ArrayList<Exercise> mExercises;
+    private ArrayList<Progexo> mProgramExercises;
 
     public Program(int id, String name) {
         mId = id;
         mName = name;
-
-        // TODO: get exercises from bd
-        mExercises = new ArrayList<>();
+        mProgramExercises =  bdd.getAllExoProgram((Integer.toString(mId)));
     }
 
     // Getters
@@ -24,7 +27,8 @@ public class Program {
         return mName;
     }
 
-    public ArrayList<Exercise> getExercises() {
-        return mExercises;
+    public ArrayList<Progexo> getExercises() {
+        mProgramExercises =  bdd.getAllExoProgram((Integer.toString(mId)));
+        return mProgramExercises;
     }
 }

@@ -10,7 +10,7 @@ import com.andro.prolapso.shapi.models.Program;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-class BddProgexoClass extends BddClass {
+public class BddProgexoClass extends BddClass {
 
     // TABLES
     private static final String TABLE_NAME = "progexo";

@@ -148,7 +148,7 @@ public class BddProgramClass extends BddClass {
         // Ouvre la bdd
         open();
 
-        // TODO
+        mDb.delete(TABLE_NAME, ID_PROGRAM +"=?", new String[]{Integer.toString(id)});
 
         // Ferme la bdd
         close();

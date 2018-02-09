@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import java.util.ArrayList;
 
-class BddExerciseClass extends BddClass {
+public class BddExerciseClass extends BddClass {
 
 
     // TABLES
