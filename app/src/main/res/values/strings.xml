@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Shapi</string>
     <string name="cancel">Annuler</string>
+    <string name="ok">OK</string>
     <string name="text_name_field">Nom: </string>
 
     <!-- MainActivity-->
@@ -15,12 +16,23 @@
     <string name="title_edit_profile_activity">Modification du profil</string>
     <string name="edit_profile_save">Sauvegarder</string>
     <string name="edit_profile_weight">Poids (en kg): </string>
-    <string name="edit_profile_height">Taille (en cm):</string>
+    <string name="edit_profile_height">Taille (en cm): </string>
     <string name="edit_profile_firstname">Prénom: </string>
 
     <!-- ProgrammesActivity -->
     <string name="title_activity_programmes">Programmes</string>
+    <string name="text_exercise_count">Nombre d\'exercices: %d</string>
+    <string name="edit_dialog_hint">Nom du programme</string>
+    <string name="edit_dialog_title">Création d\'un programme</string>
+    <string name="programmes_dialog_delete_title">Delete programme</string>
+    <string name="programmes_dialog_delege_message">Voulez-vous vraiment supprimer ce programme ?</string>
 
-    <!-- CreateProgramActivity -->
-    <string name="title_activity_create_program">Nouveau Programme</string>
+    <!-- AboutActivity -->
+    <string name="about_title">About</string>
+    <string name="about_version">Shapi v1.0</string>
+    <string name="about_made_by">Fait par:</string>
+    <string name="maxime">Aublet Maxime</string>
+    <string name="diego">Daninthe Diego</string>
+    <string name="lancelot">Demay Lancelot</string>
+    <string name="kevin">Longuet Kevin</string>
 </resources>

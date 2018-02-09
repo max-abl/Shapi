@@ -65,7 +65,7 @@ public class EditProfileActivity extends AppCompatActivity {
         // Creation du hashmap
         HashMap<String, String> hm = new HashMap<>();
 
-        // Creation des valeurs dans le HMAP
+        // Creation des valeurs dans le HashMap
         hm.put(BddUserClass.NAME, name);
         hm.put(BddUserClass.FIRSTNAME, first_name);
         hm.put(BddUserClass.HEIGHT, height);
@@ -76,6 +76,5 @@ public class EditProfileActivity extends AppCompatActivity {
         setResult(RESULT_OK);
         finish();
     }
-
-
+    
 }
