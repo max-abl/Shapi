@@ -46,10 +46,12 @@ public class BddProgramClass extends BddClass {
     *
     * */
     // Select tous les programmes d'entrainement
-    public static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM  + ", " + NAME + " FROM " + TABLE_NAME;
+    public static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME;
 
-    // Se
+    // Select un programme via l'ID
     public static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " =?";
+
+
     /*
     *  CONSTRUCTOR
     *
@@ -92,7 +94,10 @@ public class BddProgramClass extends BddClass {
     }
 
 
-    // Retour en HashMap le programme dont l'ID est specifié
+    /*
+    *  Renvoie le programme dont l'id correspond a celui passé en parametre
+    *
+    * */
     public Program getProgramsById(String id) {
 
         // Open bdd
@@ -123,10 +128,14 @@ public class BddProgramClass extends BddClass {
     }
 
 
-    // Mise a jour du nom du programme
-    // En parametre HashMap avec :
-    // "ID" = Le numero du programme a changer
-    // Les autres clef = nom de la colonne
+    /*
+    *  Mise a jour du nom du programme
+    *
+    *  En parametre HashMap avec :
+    *  "ID" = Le numero du programme a changer
+    *  Les autres clef = nom de la colonne
+    *
+    * */
     public void updateProgram(HashMap<String, String> params) {
 
         open();
@@ -139,7 +148,11 @@ public class BddProgramClass extends BddClass {
         close();
     }
 
-    // Ajoute un Programme
+
+    /*
+    *  Ajoute un programme
+    *
+    * */
     public void addProgram(String nom) {
 
         // Ouvre la bdd
