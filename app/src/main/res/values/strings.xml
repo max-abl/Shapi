@@ -7,7 +7,7 @@
 
     <!-- MainActivity-->
     <string name="hello">Bienvenue</string>
-    <string name="hello_user">Bienvenue, %1$s</string>
+    <string name="hello_user">Bienvenue %1$s</string>
     <string name="main_tv_morpho">Poids : %1$s | Taille : %2$s</string>
     <string name="main_training_programs">Programmes d\'entraînement</string>
     <string name="main_exercices">Exercices</string>
@@ -38,4 +38,9 @@
     <string name="diego">Daninthe Diego</string>
     <string name="lancelot">Demay Lancelot</string>
     <string name="kevin">Longuet Kevin</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_exercise">ExerciseActivity</string>
 </resources>
