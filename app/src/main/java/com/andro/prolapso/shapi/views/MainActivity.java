@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             textMorpho.setText(getString(R.string.main_tv_morpho,
                     results.get(BddUserClass.WEIGHT),
                     results.get(BddUserClass.HEIGHT)));
+            textMorpho.setVisibility(View.VISIBLE);
         } else {
             textMorpho.setVisibility(View.INVISIBLE);
         }

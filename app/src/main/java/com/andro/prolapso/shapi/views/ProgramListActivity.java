@@ -30,7 +30,7 @@ public class ProgramListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_programmes);
+        setContentView(R.layout.activity_program_list);
 
         mBddProgramClass = new BddProgramClass(this);
 
@@ -52,6 +52,7 @@ public class ProgramListActivity extends AppCompatActivity {
         programListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                // TODO: show choice dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProgramListActivity.this);
                 builder.setTitle(R.string.programmes_dialog_delete_title);
                 builder.setMessage(R.string.programmes_dialog_delege_message);

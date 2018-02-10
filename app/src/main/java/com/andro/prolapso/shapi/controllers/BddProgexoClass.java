@@ -51,7 +51,7 @@ public class BddProgexoClass extends BddClass {
     private final BddExerciseClass mBddExerciseClass;
 
     // CONSTRUCTOR
-     BddProgexoClass(Context context, BddProgramClass bddProgramClass) {
+    public BddProgexoClass(Context context, BddProgramClass bddProgramClass) {
         super(context);
 
         mBddProgramClass = bddProgramClass;

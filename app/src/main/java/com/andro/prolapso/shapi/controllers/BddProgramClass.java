@@ -35,7 +35,7 @@ public class BddProgramClass extends BddClass {
     private static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME;
 
     // Select un programme via l'ID
-    private static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " = ?";
+    private static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + " WHERE " + ID_PROGRAM + " = ?";
 
     private BddProgexoClass bddProgexoClass;
 
