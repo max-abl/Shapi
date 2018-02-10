@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class BddExerciseClass extends BddClass {
 
-
     // TABLES
     private static final String EXERCICE_TABLE_NAME = "exercice";
     private static final String TYPE_TABLE_NAME = "type";
