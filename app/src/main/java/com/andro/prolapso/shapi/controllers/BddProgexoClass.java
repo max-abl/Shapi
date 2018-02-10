@@ -4,8 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.andro.prolapso.shapi.models.Progexo;
-import com.andro.prolapso.shapi.models.Program;
+import com.andro.prolapso.shapi.models.ProgExo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,20 +59,20 @@ public class BddProgexoClass extends BddClass {
 
 
     // Renvoie tous les exercices d'un programmes
-    public ArrayList<Progexo> getAllExoProgram(String idProgram) {
+    public ArrayList<ProgExo> getAllExoProgram(String idProgram) {
 
         // Open bdd and cursor
         open();
         Cursor cursor = mDb.rawQuery(querySelectAllExoProgram, new String[]{idProgram});
 
         // HashMap Results
-        ArrayList<Progexo> results = new ArrayList<>();
+        ArrayList<ProgExo> results = new ArrayList<>();
 
         // Results
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
-                    results.add(new Progexo(
+                    results.add(new ProgExo(
                             mBddProgramClass.getProgramsById(Integer.toString(cursor.getInt(0))),
                             mBddExerciseClass.getExerciseById(Integer.toString(cursor.getInt(1))),
                             cursor.getString(2),
@@ -117,7 +116,7 @@ public class BddProgexoClass extends BddClass {
 
 
     // Ajoute un programme
-    public void addProgexo(Progexo p) {
+    public void addProgexo(ProgExo p) {
 
         // Ouvre la bdd
         open();

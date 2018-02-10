@@ -19,12 +19,14 @@ import java.util.ArrayList;
 
 public class ProgramListActivity extends AppCompatActivity {
     static final String EXTRA_PROGRAM_ID = "extra_program_id";
-    static final int REQUEST_SHOW_PROGRAM = 156;
+    private static final int REQUEST_SHOW_PROGRAM = 156;
 
     private BddProgramClass mBddProgramClass;
 
     private ArrayList<Program> mProgramList;
     private ProgramAdapter mProgramAdapter;
+
+    private AlertDialog mAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,9 @@ public class ProgramListActivity extends AppCompatActivity {
 
         final ListView programListView = findViewById(R.id.list_programs);
         mProgramList = mBddProgramClass.getAllPrograms();
-        mProgramAdapter = new ProgramAdapter(this, android.R.layout.simple_list_item_2, mProgramList);
+        mProgramAdapter = new ProgramAdapter(this, mProgramList);
         programListView.setAdapter(mProgramAdapter);
+
         programListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -48,31 +51,27 @@ public class ProgramListActivity extends AppCompatActivity {
             }
         });
 
-        // Show dialog which ask whether to delete or not the program
         programListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
-                // TODO: show choice dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(ProgramListActivity.this);
-                builder.setTitle(R.string.programmes_dialog_delete_title);
-                builder.setMessage(R.string.programmes_dialog_delege_message);
-                builder.setNegativeButton(R.string.cancel, null);
-                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        deleteProgram(mProgramList.get(i));
-                    }
-                });
-                builder.create().show();
-                return false;
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                showChoiceDialog(mProgramList.get(i));
+                return true;
             }
         });
 
+        // Add program
         FloatingActionButton btnAdd = findViewById(R.id.btn_add_program);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new EditDialogBuilder(ProgramListActivity.this).create().show();
+                EditDialogBuilder builder = new EditDialogBuilder(ProgramListActivity.this,
+                        R.string.programmes_dialog_delete_title, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        addProgram(EditDialogBuilder.getText());
+                    }
+                });
+                builder.create().show();
             }
         });
     }
@@ -80,7 +79,6 @@ public class ProgramListActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SHOW_PROGRAM) {
-            System.out.println("Result Code: "+resultCode);
             if (resultCode == RESULT_OK) {
                 mProgramList = mBddProgramClass.getAllPrograms();
                 mProgramAdapter.notifyDataSetChanged();
@@ -89,19 +87,66 @@ public class ProgramListActivity extends AppCompatActivity {
 
     }
 
-    void addProgram(String name) {
+    // Add a program in the database and in the ListView
+    private void addProgram(String name) {
         Program newProgram = mBddProgramClass.addProgram(name);
-
-        System.out.println(newProgram);
         mProgramList.add(newProgram);
-        System.out.println(newProgram.getName());
         mProgramAdapter.notifyDataSetChanged();
     }
 
+    // Delete a program from the database and the ListView
     private void deleteProgram(Program program) {
         mBddProgramClass.deleteProgram(program.getId());
         mProgramList.remove(program);
         mProgramAdapter.notifyDataSetChanged();
     }
 
+    // Show dialog which ask whether to delete or not the program
+    private void showChoiceDialog(final Program selectedProgram) {
+
+        // Dialog to Change program Name
+        View.OnClickListener listenerOne = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new EditDialogBuilder(ProgramListActivity.this, R.string.programmes_dialog_edit_title,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                final String newName = EditDialogBuilder.getText();
+                                mBddProgramClass.updateProgram(Integer.toString(selectedProgram.getId()), newName);
+                                selectedProgram.setName(newName);
+                                mProgramAdapter.notifyDataSetChanged();
+
+                                mAlertDialog.dismiss();
+                            }
+                        }).create().show();
+            }
+        };
+
+        // Dialog to Delete program
+        View.OnClickListener listenerTwo = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProgramListActivity.this);
+                builder.setTitle(R.string.programmes_dialog_delete_title);
+                builder.setMessage(R.string.programmes_dialog_delege_message);
+                builder.setNegativeButton(R.string.cancel, null);
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        deleteProgram(selectedProgram);
+
+                        mAlertDialog.dismiss();
+                    }
+                });
+                builder.create().show();
+            }
+        };
+
+        // Build choice dialog
+        mAlertDialog = new ChoiceDialogBuilder(ProgramListActivity.this, R.string.programmes_dialog_choice_edit,
+                R.string.programmes_dialog_choice_delete, listenerOne, listenerTwo).create();
+
+        mAlertDialog.show();
+    }
 }

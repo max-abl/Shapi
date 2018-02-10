@@ -17,8 +17,8 @@ public class ProgramAdapter extends ArrayAdapter<Program> {
 
     private final Context mContext;
 
-    public ProgramAdapter(Context context, int textViewResourceId, ArrayList<Program> programs) {
-        super(context, textViewResourceId, programs);
+    public ProgramAdapter(Context context, ArrayList<Program> programs) {
+        super(context, android.R.layout.simple_list_item_2, programs);
         mContext = context;
     }
 

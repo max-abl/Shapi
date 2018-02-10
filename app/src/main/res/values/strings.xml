@@ -24,9 +24,13 @@
     <string name="title_activity_programmes">Mes Programmes</string>
     <string name="text_exercise_count">Nombre d\'exercices: %d</string>
     <string name="edit_dialog_hint">Nom du programme</string>
-    <string name="edit_dialog_title">Création d\'un programme</string>
-    <string name="programmes_dialog_delete_title">Delete programme</string>
+    <string name="programmes_dialog_create_title">Création d\'un programme</string>
+    <string name="programmes_dialog_choice_title">Que voulez-vous faire ?</string>
+    <string name="programmes_dialog_choice_delete">Supprimer le programme</string>
+    <string name="programmes_dialog_choice_edit">Editer le nom</string>
+    <string name="programmes_dialog_delete_title">Suppression</string>
     <string name="programmes_dialog_delege_message">Voulez-vous vraiment supprimer ce programme ?</string>
+    <string name="programmes_dialog_edit_title">Edition</string>
 
     <!-- Program Activity -->
 
@@ -39,8 +43,8 @@
     <string name="lancelot">Demay Lancelot</string>
     <string name="kevin">Longuet Kevin</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- ExercicesActivity-->
     <string name="title_activity_exercise">ExerciseActivity</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
 </resources>

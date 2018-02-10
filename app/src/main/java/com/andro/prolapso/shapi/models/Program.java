@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Program {
 
     private final int mId;
-    private final String mName;
-    private final ArrayList<Progexo> mProgramExercises;
+    private final ArrayList<ProgExo> mProgramExercises;
+    private String mName;
 
-    public Program(int id, String name, ArrayList<Progexo> progexos) {
+    public Program(int id, String name, ArrayList<ProgExo> progExos) {
         mId = id;
         mName = name;
-        mProgramExercises = progexos;
+        mProgramExercises = progExos;
     }
 
     // Getters
@@ -23,7 +23,12 @@ public class Program {
         return mName;
     }
 
-    public ArrayList<Progexo> getExercises() {
+    public ArrayList<ProgExo> getExercises() {
         return mProgramExercises;
+    }
+
+    // Setter
+    public void setName(String newName) {
+        mName = newName;
     }
 }
