@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> results;
         results = dbuser.getProfile();
 
-        if (results.get(BddUserClass.NAME).equals("nom")) {
+        if (!results.get(BddUserClass.NAME).equals("nom")) {
             // Set message Bienvenue
             textHello.setText(getString(R.string.hello_user, results.get(BddUserClass.FIRSTNAME)));
 
