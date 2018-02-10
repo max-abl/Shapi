@@ -3,4 +3,5 @@
     <dimen name="app_padding">8dp</dimen>
     <dimen name="about_margin">20dp</dimen>
     <dimen name="about_min_height">30dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

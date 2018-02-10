@@ -22,8 +22,9 @@
         <activity
             android:name=".views.ProgrammesActivity"
             android:label="@string/title_activity_programmes" />
-        <activity android:name=".views.AboutActivity"
-            android:label="@string/about_title"/>
+        <activity
+            android:name=".views.AboutActivity"
+            android:label="@string/about_title" />
     </application>
 
 </manifest>
