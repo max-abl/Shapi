@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         btnProg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ProgrammesActivity.class));
+                startActivity(new Intent(MainActivity.this, ProgramListActivity.class));
             }
         });
     }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> results;
         results = dbuser.getProfile();
 
-        if (results.get(BddUserClass.NAME).equals("nom")) {
+        if (!results.get(BddUserClass.NAME).equals("nom")) {
             // Set message Bienvenue
             textHello.setText(getString(R.string.hello_user, results.get(BddUserClass.FIRSTNAME)));
 
@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             textMorpho.setText(getString(R.string.main_tv_morpho,
                     results.get(BddUserClass.WEIGHT),
                     results.get(BddUserClass.HEIGHT)));
+            textMorpho.setVisibility(View.VISIBLE);
         } else {
             textMorpho.setVisibility(View.INVISIBLE);
         }

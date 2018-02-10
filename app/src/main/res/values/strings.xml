@@ -4,6 +4,7 @@
     <string name="ok">OK</string>
     <string name="text_name_field">Nom: </string>
 
+
     <!-- MainActivity-->
     <string name="hello">Bienvenue</string>
     <string name="hello_user">Bienvenue %1$s</string>
@@ -19,13 +20,15 @@
     <string name="edit_profile_height">Taille (en cm): </string>
     <string name="edit_profile_firstname">Prénom: </string>
 
-    <!-- ProgrammesActivity -->
-    <string name="title_activity_programmes">Programmes</string>
+    <!-- ProgramListActivityvity -->
+    <string name="title_activity_programmes">Mes Programmes</string>
     <string name="text_exercise_count">Nombre d\'exercices: %d</string>
     <string name="edit_dialog_hint">Nom du programme</string>
     <string name="edit_dialog_title">Création d\'un programme</string>
     <string name="programmes_dialog_delete_title">Delete programme</string>
     <string name="programmes_dialog_delege_message">Voulez-vous vraiment supprimer ce programme ?</string>
+
+    <!-- Program Activity -->
 
     <!-- AboutActivity -->
     <string name="about_title">About</string>

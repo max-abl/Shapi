@@ -20,11 +20,12 @@
             android:name=".views.EditProfileActivity"
             android:label="@string/title_edit_profile_activity" />
         <activity
-            android:name=".views.ProgrammesActivity"
+            android:name=".views.ProgramListActivity"
             android:label="@string/title_activity_programmes" />
         <activity
             android:name=".views.AboutActivity"
             android:label="@string/about_title" />
+        <activity android:name=".views.ProgramActivity"></activity>
     </application>
 
 </manifest>

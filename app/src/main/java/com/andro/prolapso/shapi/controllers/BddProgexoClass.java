@@ -44,22 +44,27 @@ public class BddProgexoClass extends BddClass {
     // Select tous les programmes d'entrainement
     private static final String querySelectAllExoProgram = "SELECT " + ID_PROGRAM + ", " + ID_EXO +
             ", " + TIME + ", " + REPETITION + ", " + SERIE +", " + WEIGHT +
-            "FROM " + TABLE_NAME + " " +
-            "WHERE " + ID_PROGRAM + " = ?";
+            " FROM " + TABLE_NAME +
+            " WHERE " + ID_PROGRAM + " = ?";
 
+    private final BddProgramClass mBddProgramClass;
+    private final BddExerciseClass mBddExerciseClass;
 
     // CONSTRUCTOR
-    public BddProgexoClass(Context pContext) {
-        super(pContext);
+    public BddProgexoClass(Context context, BddProgramClass bddProgramClass) {
+        super(context);
+
+        mBddProgramClass = bddProgramClass;
+        mBddExerciseClass = new BddExerciseClass(context);
     }
 
 
-    // Renvoie tous les programmes
-    public ArrayList<Progexo> getAllExoProgram(String i) {
+    // Renvoie tous les exercices d'un programmes
+    public ArrayList<Progexo> getAllExoProgram(String idProgram) {
 
         // Open bdd and cursor
         open();
-        Cursor cursor = mDb.rawQuery(querySelectAllExoProgram, new String[]{i});
+        Cursor cursor = mDb.rawQuery(querySelectAllExoProgram, new String[]{idProgram});
 
         // HashMap Results
         ArrayList<Progexo> results = new ArrayList<>();
@@ -69,8 +74,8 @@ public class BddProgexoClass extends BddClass {
             if (cursor.moveToFirst()) {
                 do {
                     results.add(new Progexo(
-                            cursor.getInt(0),
-                            cursor.getInt(1),
+                            mBddProgramClass.getProgramsById(Integer.toString(cursor.getInt(0))),
+                            mBddExerciseClass.getExerciseById(Integer.toString(cursor.getInt(1))),
                             cursor.getString(2),
                             cursor.getInt(3),
                             cursor.getInt(4),
@@ -119,8 +124,8 @@ public class BddProgexoClass extends BddClass {
 
         // Insert les données dans le Content Values
         ContentValues cv = new ContentValues();
-        cv.put(ID_EXO, p.getId_exo());
-        cv.put(ID_PROGRAM, p.getId_program());
+        cv.put(ID_EXO, p.getExo().getId());
+        cv.put(ID_PROGRAM, p.getProgram().getId());
         cv.put(TIME, p.getTime());
         cv.put(REPETITION, p.getRepetition());
         cv.put(SERIE, p.getSerie());

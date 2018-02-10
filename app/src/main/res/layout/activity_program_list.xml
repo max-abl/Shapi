@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andro.prolapso.shapi.views.ProgrammesActivity">
+    tools:context="com.andro.prolapso.shapi.views.ProgramListActivity">
 
     <ListView
         android:id="@+id/list_programs"
@@ -18,7 +18,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/floating_btn_margin"
         app:srcCompat="@drawable/ic_add_white_24px" />
 
 </RelativeLayout>

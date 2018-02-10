@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.andro.prolapso.shapi.models.Progexo;
 import com.andro.prolapso.shapi.models.Program;
 
 import java.util.ArrayList;
@@ -34,14 +35,15 @@ public class BddProgramClass extends BddClass {
     private static final String querySelectAllPrograms = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME;
 
     // Select un programme via l'ID
-    private static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + "WHERE " + ID_PROGRAM + " = ?";
+    private static final String querySelectProgramById = "SELECT " + ID_PROGRAM + ", " + NAME + " FROM " + TABLE_NAME + " WHERE " + ID_PROGRAM + " = ?";
 
+    private BddProgexoClass bddProgexoClass;
 
     // CONSTRUCTOR
     public BddProgramClass(Context context) {
         super(context);
+        bddProgexoClass = new BddProgexoClass(context, this);
     }
-
 
     // Renvoie tous les programmes
     public ArrayList<Program> getAllPrograms() {
@@ -57,10 +59,10 @@ public class BddProgramClass extends BddClass {
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
-                    results.add(new Program(
-                            cursor.getInt(0),
-                            cursor.getString(1)
-                    ));
+                    final int idProg = cursor.getInt(0);
+                    results.add(new Program(idProg,
+                            cursor.getString(1),
+                            bddProgexoClass.getAllExoProgram(Integer.toString(idProg))));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -90,10 +92,10 @@ public class BddProgramClass extends BddClass {
         // Results
         if (cursor != null) {
             if (cursor.moveToFirst()) {
-                results = new Program(
-                        cursor.getInt(0),
-                        cursor.getString(1)
-                );
+                final int idProg = cursor.getInt(0);
+                results = new Program(idProg,
+                        cursor.getString(1),
+                        bddProgexoClass.getAllExoProgram(Integer.toString(idProg)));
             }
             cursor.close();
         }
@@ -140,7 +142,7 @@ public class BddProgramClass extends BddClass {
 
         System.out.println(newId);
 
-        return new Program((int) newId, nom);
+        return new Program((int) newId, nom, new ArrayList<Progexo>());
     }
 
     // Supprime un programme
