@@ -70,6 +70,14 @@ class BddHandler extends SQLiteOpenHelper {
         if (countUser(db) < 1) {
             initUser(db);
         }
+
+        if (countExo(db) < 1) {
+            initExo(db);
+        }
+
+        if (countType(db) < 1) {
+            initType(db);
+        }
     }
 
 
@@ -124,9 +132,87 @@ class BddHandler extends SQLiteOpenHelper {
         Log.d("-- BDD_CLASS --", "INIT_TYPE : Initialized: " + res);
     }
 
+
+    private void initExo(SQLiteDatabase db) {
+
+        ContentValues vals = new ContentValues();
+
+        vals.put("name","Curls");
+        vals.put("description","Curls");
+        vals.put("id_type","1");
+
+        long res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","KickBack");
+        vals.put("description","KickBack");
+        vals.put("id_type","1");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","Elevations latérales");
+        vals.put("description","Elevations latérales.");
+        vals.put("id_type","1");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","Dips");
+        vals.put("description","Dips");
+        vals.put("id_type","2");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","Developpé couché");
+        vals.put("description","Developpé couché");
+        vals.put("id_type","2");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","Crunch");
+        vals.put("description","Crunch");
+        vals.put("id_type","2");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","Squat");
+        vals.put("description","Squat");
+        vals.put("id_type","3");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","Soulevé de terre");
+        vals.put("description","Soulevé de terre");
+        vals.put("id_type","3");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+        vals.put("name","Fentes");
+        vals.put("description","Fentes");
+        vals.put("id_type","3");
+
+        res = db.insert("exercise", null, vals);
+        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+
+    }
+
     // Comptage du nombre d'user
     private long countUser(SQLiteDatabase db) {
         return DatabaseUtils.queryNumEntries(db, "user");
+    }
+
+    private long countExo(SQLiteDatabase db) {
+        return DatabaseUtils.queryNumEntries(db, "exercise");
+    }
+
+    private long countType(SQLiteDatabase db) {
+        return DatabaseUtils.queryNumEntries(db, "type");
     }
 
 }
