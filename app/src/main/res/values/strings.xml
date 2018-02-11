@@ -59,8 +59,8 @@
     <string name="prog_exo_form_toast_serie">Erreur. Veuillez renseignez le nombre de série</string>
     <string name="prog_exo_form_toast_repetition">Erreur. Veuillez renseignez le nombre de répétitions</string>
 
-    <!-- ExercicesActivity-->
-    <string name="title_activity_exercise">ExerciseActivity</string>
+    <!-- ExerciceListActivity-->
+    <string name="title_activity_exercise_list">Liste des exercices</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
 </resources>

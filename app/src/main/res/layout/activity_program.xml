@@ -7,7 +7,7 @@
     tools:context="com.andro.prolapso.shapi.views.ProgramActivity">
 
     <ListView
-        android:id="@+id/list_exercises"
+        android:id="@+id/list_prog_exos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

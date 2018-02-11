@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andro.prolapso.shapi.views.ProgramListActivity">
+    tools:context="com.andro.prolapso.shapi.views.ExerciseListActivity">
 
     <ListView
-        android:id="@+id/list_programs"
+        android:id="@+id/list_exercises"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -2,9 +2,9 @@ package com.andro.prolapso.shapi.models;
 
 public class ProgExo {
 
-    private final int repetition, serie;
     private final Program program;
     private final Exercise exo;
+    private final int repetition, serie;
     private final String time, weight;
 
     public ProgExo(Program program, Exercise exo, String time, int repetition, int serie, String weight) {

@@ -31,7 +31,7 @@ public class ProgExoAdapter extends ArrayAdapter<ProgExo> {
         final ProgExo progExo = getItem(position);
 
         if (v == null) {
-            v = LayoutInflater.from(mContext).inflate(R.layout.prog_exo, parent, false);
+            v = LayoutInflater.from(mContext).inflate(R.layout.prog_exo , parent, false);
             holder = new ProgExoHolder();
 
             // Set holder attributes

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class BddExerciseClass extends BddClass {
 
     // TABLES
-    private static final String EXERCISE_TABLE_NAME = "exercice";
+    private static final String EXERCISE_TABLE_NAME = "exercise";
     private static final String TYPE_TABLE_NAME = "type";
 
 
@@ -46,7 +46,7 @@ public class BddExerciseClass extends BddClass {
     // Tous les exercices
     private static final String querySelectAllExecises = "SELECT " + EXO_ID + ", " + EXO_DESCRIPTION + ", E." + EXO_NAME  + ", T." + TYPE_NAME + " " +
             "FROM " + EXERCISE_TABLE_NAME + " E, " + TYPE_TABLE_NAME + " T " +
-            "WHERE " + EXO_ID_TYPE + " = " + TYPE_ID;
+            "WHERE E."+ EXO_ID_TYPE + " = T." + TYPE_ID;
 
     // Exercice par ID
     private static final String querySelectExeciseById = "SELECT " + EXO_ID + ", " + EXO_DESCRIPTION + ", E." + EXO_NAME + ", T." + TYPE_NAME + " " +
@@ -56,12 +56,12 @@ public class BddExerciseClass extends BddClass {
 
 
     // CONSTRUCTOR
-    public BddExerciseClass(Context pContext) {
-        super(pContext);
+    public BddExerciseClass(Context context) {
+        super(context);
     }
 
     // Fonction donnant tous les exercices en base
-    public ArrayList<Exercise> getAllExercise() {
+    public ArrayList<Exercise> getAllExercises() {
 
         // Open bdd and cursor
         open();

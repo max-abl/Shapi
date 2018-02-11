@@ -60,7 +60,7 @@ public class ProgramListActivity extends AppCompatActivity {
         });
 
         // Add program
-        FloatingActionButton btnAdd = findViewById(R.id.btn_add_program);
+        FloatingActionButton btnAdd = findViewById(R.id.btn_add_exercise);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

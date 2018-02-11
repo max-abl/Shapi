@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 class BddHandler extends SQLiteOpenHelper {
-
+    private static final String TAG = BddHandler.class.getName();
     // Creation de la base de données
     private static final String createUser = "CREATE TABLE IF NOT EXISTS user(" +
             " id_user        INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
@@ -55,7 +55,7 @@ class BddHandler extends SQLiteOpenHelper {
     private static final String TABLE_DROP_PROGEXO = "DROP TABLE IF EXISTS " + "progexo" + ";";
 
 
-    public BddHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    BddHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
@@ -106,7 +106,7 @@ class BddHandler extends SQLiteOpenHelper {
         long res = db.insert("user", null, vals);
 
         // Initialized
-        Log.d("-- BDD_CLASS --", "INIT_USER : Initialized: " + res);
+        Log.d(TAG, "INIT_USER : Initialized: " + res);
 
     }
 
@@ -129,7 +129,7 @@ class BddHandler extends SQLiteOpenHelper {
         res = db.insert("type", null, vals);
 
         // Initialized
-        Log.d("-- BDD_CLASS --", "INIT_TYPE : Initialized: " + res);
+        Log.d(TAG, "INIT_TYPE : Initialized: " + res);
     }
 
 
@@ -142,63 +142,63 @@ class BddHandler extends SQLiteOpenHelper {
         vals.put("id_type","1");
 
         long res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","KickBack");
         vals.put("description","KickBack");
         vals.put("id_type","1");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","Elevations latérales");
         vals.put("description","Elevations latérales.");
         vals.put("id_type","1");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","Dips");
         vals.put("description","Dips");
         vals.put("id_type","2");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","Developpé couché");
         vals.put("description","Developpé couché");
         vals.put("id_type","2");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","Crunch");
         vals.put("description","Crunch");
         vals.put("id_type","2");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","Squat");
         vals.put("description","Squat");
         vals.put("id_type","3");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","Soulevé de terre");
         vals.put("description","Soulevé de terre");
         vals.put("id_type","3");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
         vals.put("name","Fentes");
         vals.put("description","Fentes");
         vals.put("id_type","3");
 
         res = db.insert("exercise", null, vals);
-        Log.d("-- BDD_CLASS --", "INIT_EXO : Initialized: " + res);
+        Log.d(TAG, "INIT_EXO : Initialized: " + res);
 
     }
 
