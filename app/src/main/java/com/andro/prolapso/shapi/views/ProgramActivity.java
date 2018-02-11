@@ -30,7 +30,7 @@ public class ProgramActivity extends AppCompatActivity {
             EXTRA_REPETITION = "extra.prog.exo.repetition",
             EXTRA_SERIE = "extra.prog.exo.serie";
 
-    private BddProgexoClass mBbddProgexoClass;
+    private BddProgexoClass mBddProgexoClass;
     private ArrayList<ProgExo> mProgExercises;
     private ProgExoAdapter mProgExoAdapter;
 
@@ -53,14 +53,14 @@ public class ProgramActivity extends AppCompatActivity {
         if (progId == -1) finish();
         else {
             final BddProgramClass bddProgramClass = new BddProgramClass(this);
-            mBbddProgexoClass = new BddProgexoClass(this, bddProgramClass);
+            mBddProgexoClass = new BddProgexoClass(this, bddProgramClass);
 
             mProgram = bddProgramClass.getProgramsById(Integer.toString(progId));
 
             setTitle(mProgram.getName());
 
             final ListView progExoListView = findViewById(R.id.list_prog_exos);
-            mProgExercises = mBbddProgexoClass.getAllExoProgram(Integer.toString(mProgram.getId()));
+            mProgExercises = mBddProgexoClass.getAllExoProgram(mProgram.getId());
             mProgExoAdapter = new ProgExoAdapter(this, mProgExercises);
             progExoListView.setAdapter(mProgExoAdapter);
 
@@ -93,7 +93,7 @@ public class ProgramActivity extends AppCompatActivity {
         View.OnClickListener listenerOne = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new ProgExoDialogBuilder(ProgramActivity.this, mProgram, progExo.getExo()).create().show();
+                new ProgExoDialogBuilder(ProgramActivity.this, progExo, mAlertDialog).create().show();
             }
         };
 
@@ -108,7 +108,7 @@ public class ProgramActivity extends AppCompatActivity {
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
-                        deleteProgExo(progExo.getExo().getId());
+                        deleteProgExo(progExo);
                         mAlertDialog.dismiss();
                     }
                 });
@@ -128,14 +128,15 @@ public class ProgramActivity extends AppCompatActivity {
         if (requestCode == REQUEST_NEW_PROG_EXO) {
             // New exercise added
             if (resultCode == RESULT_OK) {
-                int newProgExoId = data.getIntExtra(EXTRA_EXO_ID, -1);
-                if (newProgExoId != -1) {
-                    ProgExo newProgExo = new ProgExo(mProgram,
-                            mBbddProgexoClass.getBddExerciseClass().getExerciseById(data.getStringExtra(EXTRA_EXO_ID)),
+                final String newExoId = data.getStringExtra(EXTRA_EXO_ID);
+                if (newExoId != null) {
+                    ProgExo newProgExo = new ProgExo(mProgram.getId(),
+                            mBddProgexoClass.getBddExerciseClass().getExerciseById(newExoId),
                             data.getStringExtra(EXTRA_TIME),
                             data.getIntExtra(EXTRA_REPETITION, 0),
                             data.getIntExtra(EXTRA_SERIE, 0),
                             data.getStringExtra(EXTRA_WEIGHT));
+                    mBddProgexoClass.addProgexo(newProgExo);
                     mProgExercises.add(newProgExo);
                     mProgExoAdapter.notifyDataSetChanged();
                     modifications = true;
@@ -145,13 +146,18 @@ public class ProgramActivity extends AppCompatActivity {
     }
 
     // Remove the exercise for a program
-    private void deleteProgExo(int exoId) {
-        mBbddProgexoClass.deleteProgExo(mProgram.getId(), exoId);
+    private void deleteProgExo(ProgExo progExo) {
+        modifications = true;
+        mBddProgexoClass.deleteProgExo(progExo.getProgramId(), progExo.getExo().getId());
+        mProgExercises.remove(progExo);
+        mProgExoAdapter.notifyDataSetChanged();
     }
 
     // Update ProgExo
     void updateProgExo(ProgExo progExo) {
-        mBbddProgexoClass.updateProgram(progExo);
+        mBddProgexoClass.updateProgram(progExo);
+        mProgExercises = mBddProgexoClass.getAllExoProgram(mProgram.getId());
+        mProgExoAdapter.notifyDataSetChanged();
     }
 
     @Override

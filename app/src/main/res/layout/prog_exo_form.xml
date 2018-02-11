@@ -2,20 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/app_padding">
 
     <!-- Répétition -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/prog_exo_form_repetition"
-        android:textSize="@dimen/text_size"/>
+        android:textSize="@dimen/text_size" />
 
     <EditText
         android:id="@+id/edit_prog_exo_form_repetition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"/>
+        android:inputType="numberSigned"
+        android:imeOptions="actionDone"/>
 
     <!-- Série -->
     <TextView
@@ -28,7 +30,8 @@
         android:id="@+id/edit_prog_exo_form_serie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"/>
+        android:inputType="numberSigned"
+        android:imeOptions="actionDone"/>
 
     <!-- Durée -->
     <TextView
@@ -41,7 +44,8 @@
         android:id="@+id/edit_prog_exo_form_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"/>
+        android:inputType="numberSigned"
+        android:imeOptions="actionDone"/>
 
     <!-- Poids -->
     <TextView
@@ -54,6 +58,7 @@
         android:id="@+id/edit_prog_exo_form_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:imeOptions="actionDone"/>
 
 </LinearLayout>

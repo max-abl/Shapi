@@ -61,7 +61,7 @@ public class BddProgramClass extends BddClass {
                     final int idProg = cursor.getInt(0);
                     results.add(new Program(idProg,
                             cursor.getString(1),
-                            bddProgexoClass.getAllExoProgram(Integer.toString(idProg))));
+                            bddProgexoClass.getAllExoProgram(idProg)));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -94,7 +94,7 @@ public class BddProgramClass extends BddClass {
                 final int idProg = cursor.getInt(0);
                 results = new Program(idProg,
                         cursor.getString(1),
-                        bddProgexoClass.getAllExoProgram(Integer.toString(idProg)));
+                        bddProgexoClass.getAllExoProgram(idProg));
             }
             cursor.close();
         }

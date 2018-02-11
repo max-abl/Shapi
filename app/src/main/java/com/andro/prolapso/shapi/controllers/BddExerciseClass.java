@@ -50,7 +50,7 @@ public class BddExerciseClass extends BddClass {
     // Exercice par ID
     private static final String querySelectExeciseById = "SELECT " + EXO_ID + ", " + EXO_DESCRIPTION + ", E." + EXO_NAME + ", T." + TYPE_NAME + " " +
             "FROM " + EXERCISE_TABLE_NAME + " E, " + TYPE_TABLE_NAME + " T " +
-            "WHERE " + EXO_ID_TYPE + " = " + TYPE_ID + " " +
+            "WHERE E." + EXO_ID_TYPE + " = T." + TYPE_ID + " " +
             "AND " + EXO_ID + " =?";
 
 

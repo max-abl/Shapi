@@ -2,13 +2,13 @@ package com.andro.prolapso.shapi.models;
 
 public class ProgExo {
 
-    private final Program program;
+    private final int programId;
     private final Exercise exo;
     private final int repetition, serie;
     private final String time, weight;
 
-    public ProgExo(Program program, Exercise exo, String time, int repetition, int serie, String weight) {
-        this.program = program;
+    public ProgExo(int programId, Exercise exo, String time, int repetition, int serie, String weight) {
+        this.programId = programId;
         this.exo = exo;
         this.time = time;
         this.repetition = repetition;
@@ -16,8 +16,8 @@ public class ProgExo {
         this.weight = weight;
     }
 
-    public Program getProgram() {
-        return program;
+    public int getProgramId() {
+        return programId;
     }
 
     public Exercise getExo() {
