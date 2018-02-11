@@ -44,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ProgramListActivity.class));
             }
         });
+
+        final Button btnExer = findViewById(R.id.btn_exo);
+        btnExer.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
+            }
+        });
     }
 
 

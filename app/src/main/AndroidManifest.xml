@@ -25,7 +25,8 @@
         <activity
             android:name=".views.AboutActivity"
             android:label="@string/about_title" />
-        <activity android:name=".views.ProgramActivity"></activity>
+        <activity android:name=".views.ProgramActivity" />
+        <activity android:name=".views.ExerciseActivity"></activity>
     </application>
 
 </manifest>

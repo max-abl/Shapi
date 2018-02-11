@@ -14,46 +14,46 @@ import com.andro.prolapso.shapi.models.Program;
 
 import java.util.ArrayList;
 
-public class ProgramAdapter extends ArrayAdapter<Program> {
+/**
+ * Created by lens on 10/02/2018.
+ */
+
+public class ExerciseAdapter extends ArrayAdapter<Exercise> {
 
     private final Context mContext;
 
-    public ProgramAdapter(Context context, int textViewResourceId, ArrayList<Program> programs) {
-        super(context, textViewResourceId, programs);
+    public ExerciseAdapter(Context context, int textViewResourceId, ArrayList<Exercise> exercises) {
+        super(context, textViewResourceId, exercises);
         mContext = context;
     }
 
-    @Override
-    @NonNull
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View v = convertView;
 
-        final ProgramHolder holder;
+        final ExerciseAdapter.ExerciseHolder holder;
 
-        final Program program = getItem(position);
+        final Exercise exercise = getItem(position);
 
         if (v == null) {
             v = LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_2, parent, false);
-            holder = new ProgramHolder();
+            holder = new ExerciseAdapter.ExerciseHolder();
             // Set holder attributes
-            holder.programName = v.findViewById(android.R.id.text1);
-            holder.exerciseCount = v.findViewById(android.R.id.text2);
+            holder.exerciseName = v.findViewById(android.R.id.text1);
             v.setTag(holder);
         } else {
-            holder = (ProgramHolder) v.getTag();
+            holder = (ExerciseAdapter.ExerciseHolder) v.getTag();
         }
 
-        if (program == null) return v;
+        if (exercise == null) return v;
 
-        holder.programName.setText(program.getName());
-        holder.exerciseCount.setText(mContext.getString(R.string.text_exercise_count, program.getExercises().size()));
+        holder.exerciseName.setText(exercise.getName());
 
         return v;
     }
 
     // ViewHolder pattern
-    private static class ProgramHolder {
-        TextView programName, exerciseCount;
+    private static class ExerciseHolder {
+        TextView exerciseName;
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class BddExerciseClass extends BddClass {
 
     // TABLES
-    private static final String EXERCICE_TABLE_NAME = "exercice";
+    private static final String EXERCICE_TABLE_NAME = "exercise";
     private static final String TYPE_TABLE_NAME = "type";
     private static final String MUSCLE_TABLE_NAME = "muscle";
 
@@ -39,7 +39,7 @@ public class BddExerciseClass extends BddClass {
             " FOREIGN KEY(id_type) REFERENCES type(id_type)" +
             ");";
 
-    private static final String CREATE_TABLE_EXERCICE = "CREATE TABLE IF NOT EXISTS exercice(" +
+    private static final String CREATE_TABLE_EXERCICE = "CREATE TABLE IF NOT EXISTS exercise(" +
             " id_exo         INTEGER        NOT NULL PRIMARY KEY AUTOINCREMENT," +
             " name           VARCHAR(40)," +
             " description    VARCHAR(200)," +
