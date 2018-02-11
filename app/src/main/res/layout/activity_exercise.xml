@@ -7,8 +7,8 @@
     tools:context="com.andro.prolapso.shapi.views.ExerciseActivity">
 
     <ListView
-        android:id="@+id/list_exercises"
+        android:id="@+id/exercises"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>

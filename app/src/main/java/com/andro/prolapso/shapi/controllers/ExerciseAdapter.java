@@ -7,53 +7,54 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import com.andro.prolapso.shapi.R;
 import com.andro.prolapso.shapi.models.Exercise;
-import com.andro.prolapso.shapi.models.Program;
+import com.andro.prolapso.shapi.views.ExerciseActivity;
+import com.andro.prolapso.shapi.views.ExerciseListActivity;
 
 import java.util.ArrayList;
 
-/**
- * Created by lens on 10/02/2018.
- */
-
 public class ExerciseAdapter extends ArrayAdapter<Exercise> {
+    private Context mContext;
 
-    private final Context mContext;
-
-    public ExerciseAdapter(Context context, int textViewResourceId, ArrayList<Exercise> exercises) {
-        super(context, textViewResourceId, exercises);
-        mContext = context;
+    public ExerciseAdapter(ExerciseListActivity activity, ArrayList<Exercise> exercises) {
+        super(activity, android.R.layout.simple_list_item_2, exercises);
+        mContext = activity;
     }
 
+    public ExerciseAdapter(ExerciseActivity exerciseActivity, ArrayList<Exercise> mExerciseList) {
+        super(exerciseActivity, android.R.layout.simple_list_item_2, mExerciseList);
+        mContext = exerciseActivity;
+    }
+
+
+    @Override
+    @NonNull
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View v = convertView;
 
-        final ExerciseAdapter.ExerciseHolder holder;
-
+        final ExerciseHolder holder;
         final Exercise exercise = getItem(position);
 
         if (v == null) {
             v = LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_2, parent, false);
-            holder = new ExerciseAdapter.ExerciseHolder();
+            holder = new ExerciseHolder();
             // Set holder attributes
-            holder.exerciseName = v.findViewById(android.R.id.text1);
+            holder.name = v.findViewById(android.R.id.text1);
+            holder.type = v.findViewById(android.R.id.text2);
             v.setTag(holder);
         } else {
-            holder = (ExerciseAdapter.ExerciseHolder) v.getTag();
+            holder = (ExerciseHolder) v.getTag();
         }
 
         if (exercise == null) return v;
-
-        holder.exerciseName.setText(exercise.getName());
+        holder.name.setText(exercise.getName());
+        holder.type.setText(exercise.getType());
 
         return v;
     }
 
     // ViewHolder pattern
     private static class ExerciseHolder {
-        TextView exerciseName;
+        TextView name, type;
     }
-
 }

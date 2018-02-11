@@ -187,4 +187,8 @@ public class BddProgexoClass extends BddClass {
         // Ferme la bdd
         close();
     }
+
+    public BddExerciseClass getBddExerciseClass() {
+        return mBddExerciseClass;
+    }
 }

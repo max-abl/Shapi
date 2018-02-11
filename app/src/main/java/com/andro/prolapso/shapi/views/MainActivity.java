@@ -37,16 +37,16 @@ public class MainActivity extends AppCompatActivity {
         // On met a jour la vue pour afficher les données en base
         updateView();
 
-        final Button btnProg = findViewById(R.id.btn_programs);
+        final Button btnProg = findViewById(R.id.btn_programs),
+                btnExo = findViewById(R.id.btn_exo);
         btnProg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, ProgramListActivity.class));
             }
         });
-
-        final Button btnExer = findViewById(R.id.btn_exo);
-        btnExer.setOnClickListener(new View.OnClickListener() {
+        btnExo.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
             }

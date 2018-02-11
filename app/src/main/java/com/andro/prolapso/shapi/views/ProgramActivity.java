@@ -3,11 +3,11 @@ package com.andro.prolapso.shapi.views;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.andro.prolapso.shapi.R;
@@ -21,13 +21,23 @@ import java.util.ArrayList;
 
 public class ProgramActivity extends AppCompatActivity {
     private static final int REQUEST_NEW_PROG_EXO = 68;
-    static final String EXTRA_EXO_ID = "extra.exo.id";
+    // Used to add exercise to program
+    static final String ACTION_ADD_EXERCISE = "action.add.exercise",
+            EXTRA_PROGRAM_ID = "extra.program.id",
+            EXTRA_EXO_ID = "extra.exo.id",
+            EXTRA_TIME = "extra.prog.exo.time",
+            EXTRA_WEIGHT = "extra.prog.exo.weight",
+            EXTRA_REPETITION = "extra.prog.exo.repetition",
+            EXTRA_SERIE = "extra.prog.exo.serie";
 
     private BddProgexoClass mBbddProgexoClass;
     private ArrayList<ProgExo> mProgExercises;
     private ProgExoAdapter mProgExoAdapter;
 
-    private int idProgram;
+    // Current program
+    private Program mProgram;
+
+    // Used to dissmis ChoiceDialog
     private AlertDialog mAlertDialog;
     // True if the user modificates something
     private boolean modifications;
@@ -45,14 +55,12 @@ public class ProgramActivity extends AppCompatActivity {
             final BddProgramClass bddProgramClass = new BddProgramClass(this);
             mBbddProgexoClass = new BddProgexoClass(this, bddProgramClass);
 
-            final Program program = bddProgramClass.getProgramsById(Integer.toString(progId));
+            mProgram = bddProgramClass.getProgramsById(Integer.toString(progId));
 
-            setTitle(program.getName());
+            setTitle(mProgram.getName());
 
-            idProgram = program.getId();
-
-            final ListView progExoListView = findViewById(R.id.list_exercises);
-            mProgExercises = mBbddProgexoClass.getAllExoProgram(Integer.toString(idProgram));
+            final ListView progExoListView = findViewById(R.id.list_prog_exos);
+            mProgExercises = mBbddProgexoClass.getAllExoProgram(Integer.toString(mProgram.getId()));
             mProgExoAdapter = new ProgExoAdapter(this, mProgExercises);
             progExoListView.setAdapter(mProgExoAdapter);
 
@@ -65,11 +73,14 @@ public class ProgramActivity extends AppCompatActivity {
             });
 
             // Bouton ajout exercice
-            final Button btnAdd = findViewById(R.id.btn_add_prog_exo);
+            final FloatingActionButton btnAdd = findViewById(R.id.btn_add_prog_exo);
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // TODO: list exercices
+                    Intent startIntent = new Intent(ProgramActivity.this, ExerciseListActivity.class);
+                    startIntent.setAction(ACTION_ADD_EXERCISE);
+                    startIntent.putExtra(EXTRA_PROGRAM_ID, Integer.toString(mProgram.getId()));
+                    startActivityForResult(startIntent, REQUEST_NEW_PROG_EXO);
                 }
             });
         }
@@ -82,7 +93,7 @@ public class ProgramActivity extends AppCompatActivity {
         View.OnClickListener listenerOne = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           //TODO:     new ProgExoDialogBuilder(ProgramActivity.this, progExo);
+                new ProgExoDialogBuilder(ProgramActivity.this, mProgram, progExo.getExo()).create().show();
             }
         };
 
@@ -119,7 +130,13 @@ public class ProgramActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 int newProgExoId = data.getIntExtra(EXTRA_EXO_ID, -1);
                 if (newProgExoId != -1) {
-                    mProgExercises.add(mBbddProgexoClass.getProgExoByIds(Integer.toString(idProgram), Integer.toString(newProgExoId)));
+                    ProgExo newProgExo = new ProgExo(mProgram,
+                            mBbddProgexoClass.getBddExerciseClass().getExerciseById(data.getStringExtra(EXTRA_EXO_ID)),
+                            data.getStringExtra(EXTRA_TIME),
+                            data.getIntExtra(EXTRA_REPETITION, 0),
+                            data.getIntExtra(EXTRA_SERIE, 0),
+                            data.getStringExtra(EXTRA_WEIGHT));
+                    mProgExercises.add(newProgExo);
                     mProgExoAdapter.notifyDataSetChanged();
                     modifications = true;
                 }
@@ -129,7 +146,7 @@ public class ProgramActivity extends AppCompatActivity {
 
     // Remove the exercise for a program
     private void deleteProgExo(int exoId) {
-        mBbddProgexoClass.deleteProgExo(idProgram, exoId);
+        mBbddProgexoClass.deleteProgExo(mProgram.getId(), exoId);
     }
 
     // Update ProgExo

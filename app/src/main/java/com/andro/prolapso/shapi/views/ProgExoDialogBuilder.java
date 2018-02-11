@@ -8,17 +8,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.andro.prolapso.shapi.R;
+import com.andro.prolapso.shapi.models.Exercise;
 import com.andro.prolapso.shapi.models.ProgExo;
+import com.andro.prolapso.shapi.models.Program;
 
 class ProgExoDialogBuilder extends AlertDialog.Builder {
 
-    ProgExoDialogBuilder(final Activity activity, String exerciseName) {
+    ProgExoDialogBuilder(final Activity activity, final Program program, final Exercise exercise) {
         super(activity);
 
         final View dialogView = View.inflate(activity, R.layout.prog_exo_form, null);
 
         setView(dialogView);
-        setTitle(exerciseName);
+        setTitle(exercise.getName());
 
         final EditText editTime = dialogView.findViewById(R.id.edit_prog_exo_form_time),
                 editSerie = dialogView.findViewById(R.id.edit_prog_exo_form_serie),
@@ -37,8 +39,7 @@ class ProgExoDialogBuilder extends AlertDialog.Builder {
                 } else if (editRepetition.getText().toString().length() == 0) {
                     Toast.makeText(activity, R.string.prog_exo_form_toast_repetition, Toast.LENGTH_SHORT).show();
                 } else {
-                    // TODO: get id prog and idExo
-      /*              ProgExo newProgExo = new ProgExo(idProg, idExo, time, Integer.parseInt(editRepetition.getText().toString()),
+                    ProgExo newProgExo = new ProgExo(program, exercise, time, Integer.parseInt(editRepetition.getText().toString()),
                             Integer.parseInt(editSerie.getText().toString()), weight);
                     if (activity instanceof ProgramActivity) {
                         // Update
@@ -46,8 +47,8 @@ class ProgExoDialogBuilder extends AlertDialog.Builder {
 
                     } else {
                         // Create
-
-                    }*/
+                        ((ExerciseListActivity) activity).returnAndAddExercise(newProgExo);
+                    }
                 }
             }
         });
