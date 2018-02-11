@@ -1,10 +1,8 @@
 package com.andro.prolapso.shapi.views;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -42,7 +40,6 @@ public class ExerciseListActivity extends AppCompatActivity {
 
         final ListView programListView = findViewById(R.id.list_exercises);
         mExerciseList = mBddExercise.getAllExercises();
-        Log.e("TEST", ""+mExerciseList.size());
         final ExerciseAdapter exercisesAdatper = new ExerciseAdapter(this, mExerciseList);
         programListView.setAdapter(exercisesAdatper);
 
@@ -51,25 +48,12 @@ public class ExerciseListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Exercise selectedExercise = mExerciseList.get(i);
                 if (addingExercise) {
-                    new ProgExoDialogBuilder(ExerciseListActivity.this, program, selectedExercise).create().show();
+                    new ProgExoDialogBuilder(ExerciseListActivity.this, program.getId(), selectedExercise).create().show();
                 } else {
                     // TODO: do something on exercise click
                 }
             }
         });
-
-        // Add Exercise
-        FloatingActionButton btnAdd = findViewById(R.id.btn_add_exercise);
-        if (addingExercise) {
-            btnAdd.setVisibility(View.GONE);
-        } else {
-            btnAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // TODO: add to program
-                }
-            });
-        }
     }
 
     // Return the exercise to add to a program in ProgramAcitivty

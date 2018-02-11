@@ -63,12 +63,11 @@ public class BddProgexoClass extends BddClass {
     }
 
 
-    // Renvoie tous les exercices d'un programmes
-    public ArrayList<ProgExo> getAllExoProgram(String idProgram) {
-
+    // Renvoie tous les exercices d'un programme
+    public ArrayList<ProgExo> getAllExoProgram(int progId) {
         // Open bdd and cursor
         open();
-        Cursor cursor = mDb.rawQuery(querySelectAllExoProgram, new String[]{idProgram});
+        Cursor cursor = mDb.rawQuery(querySelectAllExoProgram, new String[]{Integer.toString(progId)});
 
         // HashMap Results
         ArrayList<ProgExo> results = new ArrayList<>();
@@ -78,7 +77,7 @@ public class BddProgexoClass extends BddClass {
             if (cursor.moveToFirst()) {
                 do {
                     results.add(new ProgExo(
-                            mBddProgramClass.getProgramsById(Integer.toString(cursor.getInt(0))),
+                            progId,
                             mBddExerciseClass.getExerciseById(Integer.toString(cursor.getInt(1))),
                             cursor.getString(2),
                             cursor.getInt(3),
@@ -115,7 +114,7 @@ public class BddProgexoClass extends BddClass {
             if (cursor.moveToFirst()) {
                 final int idProg = cursor.getInt(0);
                 result = new ProgExo(
-                        mBddProgramClass.getProgramsById(Integer.toString(cursor.getInt(0))),
+                        cursor.getInt(0),
                         mBddExerciseClass.getExerciseById(Integer.toString(cursor.getInt(1))),
                         cursor.getString(2),
                         cursor.getInt(3),
@@ -150,7 +149,7 @@ public class BddProgexoClass extends BddClass {
         cv.put(WEIGHT, progExo.getWeight());
 
         mDb.update(TABLE_NAME, cv, ID_PROGRAM + "= ? AND " + ID_EXO + " = ?",
-                new String[]{Integer.toString(progExo.getProgram().getId()), Integer.toString(progExo.getExo().getId())});
+                new String[]{Integer.toString(progExo.getProgramId()), Integer.toString(progExo.getExo().getId())});
 
         close();
     }
@@ -164,7 +163,7 @@ public class BddProgexoClass extends BddClass {
         // Insert les données dans le Content Values
         ContentValues cv = new ContentValues();
         cv.put(ID_EXO, p.getExo().getId());
-        cv.put(ID_PROGRAM, p.getProgram().getId());
+        cv.put(ID_PROGRAM, p.getProgramId());
         cv.put(TIME, p.getTime());
         cv.put(REPETITION, p.getRepetition());
         cv.put(SERIE, p.getSerie());
