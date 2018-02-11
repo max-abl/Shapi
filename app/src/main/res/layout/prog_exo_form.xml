@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Répétition -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prog_exo_form_repetition"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:id="@+id/edit_prog_exo_form_repetition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"/>
+
+    <!-- Série -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prog_exo_form_serie"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:id="@+id/edit_prog_exo_form_serie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"/>
+
+    <!-- Durée -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prog_exo_form_time"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:id="@+id/edit_prog_exo_form_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"/>
+
+    <!-- Poids -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:text="@string/text_weight_field"/>
+
+    <EditText
+        android:id="@+id/edit_prog_exo_form_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"/>
+
+</LinearLayout>

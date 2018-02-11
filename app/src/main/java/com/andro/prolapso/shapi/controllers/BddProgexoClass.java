@@ -7,7 +7,6 @@ import android.database.Cursor;
 import com.andro.prolapso.shapi.models.ProgExo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BddProgexoClass extends BddClass {
 
@@ -45,6 +44,12 @@ public class BddProgexoClass extends BddClass {
             ", " + TIME + ", " + REPETITION + ", " + SERIE +", " + WEIGHT +
             " FROM " + TABLE_NAME +
             " WHERE " + ID_PROGRAM + " = ?";
+
+    // Select un ProgExo
+    private static final String querySelectProgExoById = "SELECT " + ID_PROGRAM + ", " + ID_EXO +
+            ", " + TIME + ", " + REPETITION + ", " + SERIE +", " + WEIGHT +
+            " FROM " + TABLE_NAME + " WHERE " + ID_PROGRAM + " = ? AND " + ID_EXO + " = ?" ;
+
 
     private final BddProgramClass mBddProgramClass;
     private final BddExerciseClass mBddExerciseClass;
@@ -91,6 +96,41 @@ public class BddProgexoClass extends BddClass {
         return results;
     }
 
+    /*
+*  Renvoie le programme dont l'id correspond a celui passé en parametre
+*
+* */
+    public ProgExo getProgExoByIds(String progId, String exoId) {
+        // Open bdd
+        open();
+
+        // HashMap Results
+        ProgExo result = null;
+
+        // Query Select
+        Cursor cursor = mDb.rawQuery(querySelectProgExoById, new String[]{progId, exoId});
+
+        // Results
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                final int idProg = cursor.getInt(0);
+                result = new ProgExo(
+                        mBddProgramClass.getProgramsById(Integer.toString(cursor.getInt(0))),
+                        mBddExerciseClass.getExerciseById(Integer.toString(cursor.getInt(1))),
+                        cursor.getString(2),
+                        cursor.getInt(3),
+                        cursor.getInt(4),
+                        cursor.getString(5));
+            }
+            cursor.close();
+        }
+
+        // Close bdd
+        close();
+
+        return result;
+    }
+
 
     /*
     *  Mise a jour du nom du programme
@@ -100,20 +140,20 @@ public class BddProgexoClass extends BddClass {
     *  "id_program" = Le numero du programme a changer
     *  Les autres clef = nom de la colonne
     */
-    public void updateProgram(HashMap<String, String> params) {
+    public void updateProgram(ProgExo progExo) {
         open();
 
         ContentValues cv = new ContentValues();
-        cv.put(TIME, params.get(TIME));
-        cv.put(REPETITION, params.get(REPETITION));
-        cv.put(SERIE, params.get(SERIE));
-        cv.put(WEIGHT, params.get(WEIGHT));
+        cv.put(TIME, progExo.getTime());
+        cv.put(REPETITION, progExo.getRepetition());
+        cv.put(SERIE, progExo.getSerie());
+        cv.put(WEIGHT, progExo.getWeight());
 
-        mDb.update(TABLE_NAME, cv, "id_exo=? AND id_program=?", new String[]{params.get(ID_EXO), params.get(ID_PROGRAM)});
+        mDb.update(TABLE_NAME, cv, ID_PROGRAM + "= ? AND " + ID_EXO + " = ?",
+                new String[]{Integer.toString(progExo.getProgram().getId()), Integer.toString(progExo.getExo().getId())});
 
         close();
     }
-
 
     // Ajoute un programme
     public void addProgexo(ProgExo p) {
@@ -132,6 +172,17 @@ public class BddProgexoClass extends BddClass {
 
         // Insert les données dans la table
         mDb.insert(TABLE_NAME, null, cv);
+
+        // Ferme la bdd
+        close();
+    }
+
+    // Supprime un ProgExo de la base
+    public void deleteProgExo(int progId, int exoId) {
+        // Ouvre la bdd
+        open();
+
+        mDb.delete(TABLE_NAME, ID_PROGRAM + " = ? AND " + ID_EXO + " = ?", new String[]{Integer.toString(progId), Integer.toString(exoId)});
 
         // Ferme la bdd
         close();

@@ -65,7 +65,7 @@ public class ProgramListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditDialogBuilder builder = new EditDialogBuilder(ProgramListActivity.this,
-                        R.string.programmes_dialog_create_title, new DialogInterface.OnClickListener() {
+                        R.string.program_list_dialog_create_title, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         addProgram(EditDialogBuilder.getText());
@@ -80,6 +80,7 @@ public class ProgramListActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SHOW_PROGRAM) {
             if (resultCode == RESULT_OK) {
+                // Update interface
                 mProgramList = mBddProgramClass.getAllPrograms();
                 mProgramAdapter.notifyDataSetChanged();
             }
@@ -108,7 +109,7 @@ public class ProgramListActivity extends AppCompatActivity {
         View.OnClickListener listenerOne = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new EditDialogBuilder(ProgramListActivity.this, R.string.programmes_dialog_edit_title,
+                new EditDialogBuilder(ProgramListActivity.this, R.string.edit_title,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -128,8 +129,8 @@ public class ProgramListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProgramListActivity.this);
-                builder.setTitle(R.string.programmes_dialog_delete_title);
-                builder.setMessage(R.string.programmes_dialog_delege_message);
+                builder.setTitle(R.string.delete_title);
+                builder.setMessage(R.string.program_list_dialog_delete_message);
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
@@ -144,8 +145,8 @@ public class ProgramListActivity extends AppCompatActivity {
         };
 
         // Build choice dialog
-        mAlertDialog = new ChoiceDialogBuilder(ProgramListActivity.this, R.string.programmes_dialog_choice_edit,
-                R.string.programmes_dialog_choice_delete, listenerOne, listenerTwo).create();
+        mAlertDialog = new ChoiceDialogBuilder(ProgramListActivity.this, R.string.program_list_dialog_choice_update,
+                R.string.program_list_dialog_choice_delete, listenerOne, listenerTwo).create();
 
         mAlertDialog.show();
     }

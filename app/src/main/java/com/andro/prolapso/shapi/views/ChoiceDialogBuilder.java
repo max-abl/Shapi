@@ -21,7 +21,7 @@ class ChoiceDialogBuilder extends AlertDialog.Builder {
 
         setView(dialogView);
 
-        setTitle(R.string.programmes_dialog_choice_title);
+        setTitle(R.string.dialog_choice_title);
         choice1.setText(text1);
         choice2.setText(text2);
 
