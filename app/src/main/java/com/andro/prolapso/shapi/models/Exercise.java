@@ -4,13 +4,11 @@ public class Exercise {
     private final int mId;
     private final String mName;
     private final String mDescription;
-    private final String mMuscle;
     private final String mType;
 
-    public Exercise(int id, String description, String name, String muscle, String type) {
+    public Exercise(int id, String description, String name, String type) {
         mId = id;
         mName = name;
-        mMuscle = muscle;
         mDescription = description;
         mType = type;
     }
@@ -22,10 +20,6 @@ public class Exercise {
 
     public String getName() {
         return mName;
-    }
-
-    public String getMuscle() {
-        return mMuscle;
     }
 
     public String getDescription() {

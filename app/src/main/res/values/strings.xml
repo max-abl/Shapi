@@ -3,6 +3,11 @@
     <string name="cancel">Annuler</string>
     <string name="ok">OK</string>
     <string name="text_name_field">Nom: </string>
+    <string name="text_weight_field">Poids (en kg): </string>
+    <string name="integer">%d</string>
+    <string name="edit_title">Edition</string>
+    <string name="delete_title">Suppression</string>
+    <string name="dialog_choice_title">Que voulez-vous faire ?</string>
 
 
     <!-- MainActivity-->
@@ -16,19 +21,27 @@
     <!-- EditProfileActivity -->
     <string name="title_edit_profile_activity">Modification du profil</string>
     <string name="edit_profile_save">Sauvegarder</string>
-    <string name="edit_profile_weight">Poids (en kg): </string>
     <string name="edit_profile_height">Taille (en cm): </string>
     <string name="edit_profile_firstname">Prénom: </string>
 
     <!-- ProgramListActivityvity -->
-    <string name="title_activity_programmes">Mes Programmes</string>
+    <string name="title_activity_program_list">Mes Programmes</string>
     <string name="text_exercise_count">Nombre d\'exercices: %d</string>
     <string name="edit_dialog_hint">Nom du programme</string>
-    <string name="edit_dialog_title">Création d\'un programme</string>
-    <string name="programmes_dialog_delete_title">Delete programme</string>
-    <string name="programmes_dialog_delege_message">Voulez-vous vraiment supprimer ce programme ?</string>
+    <string name="program_list_dialog_create_title">Création d\'un programme</string>
+    <string name="program_list_dialog_choice_delete">Supprimer le programme</string>
+    <string name="program_list_dialog_choice_update">Editer le nom</string>
+    <string name="program_list_dialog_delete_message">Voulez-vous vraiment supprimer ce programme ?</string>
 
     <!-- Program Activity -->
+    <string name="program_repetition">Répétitions: %d</string>
+    <string name="program_serie">Série: %d</string>
+    <string name="program_time">Durée: %ss</string>
+    <string name="program_weight">Poids: %skg</string>
+    <string name="program_dialog_choice_delete">Supprimer l\'exercice</string>
+    <string name="program_dialog_choice_update">Modifier l\'exercice</string>
+    <string name="program_dialog_delete_message">Voulez-vous vraiment supprimer cet exercice ?</string>
+    <string name="program_dialog_create_title">Ajout d\'un exercice</string>
 
     <!-- AboutActivity -->
     <string name="about_title">About</string>
@@ -39,8 +52,15 @@
     <string name="lancelot">Demay Lancelot</string>
     <string name="kevin">Longuet Kevin</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- ProgExoDialogForm-->
+    <string name="prog_exo_form_serie">Série:</string>
+    <string name="prog_exo_form_repetition">Répétition:</string>
+    <string name="prog_exo_form_time">Durée (en s):</string>
+    <string name="prog_exo_form_toast_serie">Erreur. Veuillez renseignez le nombre de série</string>
+    <string name="prog_exo_form_toast_repetition">Erreur. Veuillez renseignez le nombre de répétitions</string>
+
+    <!-- ExercicesActivity-->
     <string name="title_activity_exercise">ExerciseActivity</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
 </resources>

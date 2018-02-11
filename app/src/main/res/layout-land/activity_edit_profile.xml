@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/app_padding"
-    tools:context="com.andro.prolapso.shapi.views.EditProfileActivity">
+    android:layout_height="match_parent">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
@@ -20,7 +26,7 @@
         <EditText
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="29dp"
             android:ems="10"
             android:imeOptions="actionNext"
             android:inputType="textPersonName" />
@@ -33,7 +39,7 @@
         <EditText
             android:id="@+id/edit_firstname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="29dp"
             android:ems="10"
             android:imeOptions="actionNext"
             android:inputType="textPersonName" />
@@ -46,7 +52,7 @@
         <EditText
             android:id="@+id/edit_height"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="29dp"
             android:ems="10"
             android:imeOptions="actionNext"
             android:inputType="numberSigned" />
@@ -59,35 +65,41 @@
         <EditText
             android:id="@+id/edit_weight"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="29dp"
+            android:digits="0123456789."
             android:ems="10"
             android:imeOptions="actionDone"
-            android:digits="0123456789."
-            android:inputType="numberDecimal"/>
+            android:inputType="numberDecimal" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="340dp"
-        android:layout_height="49dp"
+        android:layout_height="36dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="8dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/cancel" />
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="saveProfile"
             android:text="@string/edit_profile_save" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

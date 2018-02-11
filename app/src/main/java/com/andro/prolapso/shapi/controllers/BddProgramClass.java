@@ -4,11 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.andro.prolapso.shapi.models.Progexo;
+import com.andro.prolapso.shapi.models.ProgExo;
 import com.andro.prolapso.shapi.models.Program;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BddProgramClass extends BddClass {
 
@@ -113,13 +112,13 @@ public class BddProgramClass extends BddClass {
     *  "ID" = Le numero du programme a changer
     *  Les autres clef = nom de la colonne
     */
-    public void updateProgram(HashMap<String, String> params) {
+    public void updateProgram(String idProg, String newName) {
         open();
 
         ContentValues cv = new ContentValues();
-        cv.put(NAME, params.get(NAME));
+        cv.put(NAME, newName);
 
-        mDb.update(TABLE_NAME, cv, "id_program = ?", new String[]{params.get("ID")});
+        mDb.update(TABLE_NAME, cv, "id_program = ?", new String[]{idProg});
 
         close();
     }
@@ -140,9 +139,7 @@ public class BddProgramClass extends BddClass {
         // Ferme la bdd
         close();
 
-        System.out.println(newId);
-
-        return new Program((int) newId, nom, new ArrayList<Progexo>());
+        return new Program((int) newId, nom, new ArrayList<ProgExo>());
     }
 
     // Supprime un programme
