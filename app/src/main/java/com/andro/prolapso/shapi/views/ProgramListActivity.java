@@ -65,7 +65,7 @@ public class ProgramListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditDialogBuilder builder = new EditDialogBuilder(ProgramListActivity.this,
-                        R.string.programmes_dialog_delete_title, new DialogInterface.OnClickListener() {
+                        R.string.programmes_dialog_create_title, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         addProgram(EditDialogBuilder.getText());
