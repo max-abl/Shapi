@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.andro.prolapso.shapi.R;
 import com.andro.prolapso.shapi.controllers.BddProgexoClass;
@@ -33,6 +34,7 @@ public class ProgramActivity extends AppCompatActivity {
     private BddProgexoClass mBddProgexoClass;
     private ArrayList<ProgExo> mProgExercises;
     private ProgExoAdapter mProgExoAdapter;
+    private TextView textNoExos;
 
     // Current program
     private Program mProgram;
@@ -58,6 +60,7 @@ public class ProgramActivity extends AppCompatActivity {
             mProgram = bddProgramClass.getProgramsById(Integer.toString(progId));
 
             setTitle(mProgram.getName());
+            textNoExos = findViewById(R.id.text_no_exo);
 
             final ListView progExoListView = findViewById(R.id.list_prog_exos);
             mProgExercises = mBddProgexoClass.getAllExoProgram(mProgram.getId());
@@ -83,6 +86,16 @@ public class ProgramActivity extends AppCompatActivity {
                     startActivityForResult(startIntent, REQUEST_NEW_PROG_EXO);
                 }
             });
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mProgExercises.size() == 0) {
+            textNoExos.setVisibility(View.VISIBLE);
+        } else {
+            textNoExos.setVisibility(View.GONE);
         }
     }
 
@@ -140,6 +153,8 @@ public class ProgramActivity extends AppCompatActivity {
                     mProgExercises.add(newProgExo);
                     mProgExoAdapter.notifyDataSetChanged();
                     modifications = true;
+
+                    textNoExos.setVisibility(View.GONE);
                 }
             }
         }
@@ -164,7 +179,7 @@ public class ProgramActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Update interface in previous activity if we did changes
         if (modifications) {
-            setResult(RESULT_OK);
+            setResult(RESULT_OK, new Intent().putExtra(ProgramListActivity.EXTRA_PROGRAM_ID, mProgram.getId()));
         }
         super.onBackPressed();
     }
