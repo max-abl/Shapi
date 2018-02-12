@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/prog_exo_form_repetition"
+        android:labelFor="@id/edit_prog_exo_form_repetition"
         android:textSize="@dimen/text_size" />
 
     <EditText
@@ -23,6 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:labelFor="@id/edit_prog_exo_form_serie"
         android:text="@string/prog_exo_form_serie"
         android:textSize="@dimen/text_size"/>
 
@@ -37,6 +39,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:labelFor="@id/edit_prog_exo_form_time"
         android:text="@string/prog_exo_form_time"
         android:textSize="@dimen/text_size"/>
 
@@ -51,6 +54,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:labelFor="@id/edit_prog_exo_form_weight"
         android:textSize="@dimen/text_size"
         android:text="@string/text_weight_field"/>
 

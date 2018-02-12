@@ -149,6 +149,7 @@ public class BddProgramClass extends BddClass {
 
         mDb.delete(TABLE_NAME, ID_PROGRAM +"=?", new String[]{Integer.toString(id)});
 
+
         // Ferme la bdd
         close();
     }

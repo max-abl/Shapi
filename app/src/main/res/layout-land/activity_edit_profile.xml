@@ -21,6 +21,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:labelFor="@id/edit_name"
             android:text="@string/text_name_field" />
 
         <EditText
@@ -34,6 +36,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:labelFor="@id/edit_firstname"
             android:text="@string/edit_profile_firstname" />
 
         <EditText
@@ -47,6 +51,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:labelFor="@id/edit_height"
             android:text="@string/edit_profile_height" />
 
         <EditText
@@ -60,6 +66,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:labelFor="@id/edit_weight"
             android:text="@string/text_weight_field" />
 
         <EditText
