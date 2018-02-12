@@ -8,8 +8,7 @@
     <string name="edit_title">Edition</string>
     <string name="delete_title">Suppression</string>
     <string name="dialog_choice_title">Que voulez-vous faire ?</string>
-
-
+    
     <!-- MainActivity-->
     <string name="hello">Bienvenue</string>
     <string name="hello_user">Bienvenue %1$s</string>
@@ -17,6 +16,7 @@
     <string name="main_training_programs">Programmes d\'entraînement</string>
     <string name="main_exercices">Exercices</string>
     <string name="main_profile">Editer le profil</string>
+    <string name="main_logo_desc">Logo de l\'application</string>
 
     <!-- EditProfileActivity -->
     <string name="title_edit_profile_activity">Modification du profil</string>
