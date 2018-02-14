@@ -8,8 +8,7 @@
     <string name="edit_title">Edition</string>
     <string name="delete_title">Suppression</string>
     <string name="dialog_choice_title">Que voulez-vous faire ?</string>
-
-
+    
     <!-- MainActivity-->
     <string name="hello">Bienvenue</string>
     <string name="hello_user">Bienvenue %1$s</string>
@@ -17,6 +16,7 @@
     <string name="main_training_programs">Programmes d\'entraînement</string>
     <string name="main_exercices">Exercices</string>
     <string name="main_profile">Editer le profil</string>
+    <string name="main_logo_desc">Logo de l\'application</string>
 
     <!-- EditProfileActivity -->
     <string name="title_edit_profile_activity">Modification du profil</string>
@@ -42,6 +42,7 @@
     <string name="program_dialog_choice_update">Modifier l\'exercice</string>
     <string name="program_dialog_delete_message">Voulez-vous vraiment supprimer cet exercice ?</string>
     <string name="program_dialog_create_title">Ajout d\'un exercice</string>
+    <string name="program_no_exo">Aucun exercice dans ce programme</string>
 
     <!-- AboutActivity -->
     <string name="about_title">About</string>
@@ -53,8 +54,8 @@
     <string name="kevin">Longuet Kevin</string>
 
     <!-- ProgExoDialogForm-->
-    <string name="prog_exo_form_serie">Série:</string>
-    <string name="prog_exo_form_repetition">Répétition:</string>
+    <string name="prog_exo_form_serie">Série* :</string>
+    <string name="prog_exo_form_repetition">Répétition* :</string>
     <string name="prog_exo_form_time">Durée (en s):</string>
     <string name="prog_exo_form_toast_serie">Erreur. Veuillez renseignez le nombre de série</string>
     <string name="prog_exo_form_toast_repetition">Erreur. Veuillez renseignez le nombre de répétitions</string>

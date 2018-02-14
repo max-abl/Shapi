@@ -44,7 +44,7 @@ class BddHandler extends SQLiteOpenHelper {
             " repetition    INTEGER             ," +
             " serie         INTEGER             ," +
             " weight        INTEGER             ," +
-            " FOREIGN KEY(id_program) REFERENCES program(id_program)," +
+            " FOREIGN KEY(id_program) REFERENCES program(id_program) ON DELETE CASCADE," +
             " FOREIGN KEY(id_exo) REFERENCES exercise(id_exo)" +
             ");";
 

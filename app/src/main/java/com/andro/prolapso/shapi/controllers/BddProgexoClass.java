@@ -50,7 +50,6 @@ public class BddProgexoClass extends BddClass {
             ", " + TIME + ", " + REPETITION + ", " + SERIE +", " + WEIGHT +
             " FROM " + TABLE_NAME + " WHERE " + ID_PROGRAM + " = ? AND " + ID_EXO + " = ?" ;
 
-
     private final BddProgramClass mBddProgramClass;
     private final BddExerciseClass mBddExerciseClass;
 

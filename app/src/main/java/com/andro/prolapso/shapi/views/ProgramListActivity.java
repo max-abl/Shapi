@@ -78,11 +78,10 @@ public class ProgramListActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        System.out.println("Acti resu: " + requestCode + " " +resultCode);
         if (requestCode == REQUEST_SHOW_PROGRAM) {
             if (resultCode == RESULT_OK) {
-                // Update interface
-                mProgramList = mBddProgramClass.getAllPrograms();
-                mProgramAdapter.notifyDataSetChanged();
+                updateProgram(data.getIntExtra(EXTRA_PROGRAM_ID, -1));
             }
         }
 
@@ -99,6 +98,20 @@ public class ProgramListActivity extends AppCompatActivity {
     private void deleteProgram(Program program) {
         mBddProgramClass.deleteProgram(program.getId());
         mProgramList.remove(program);
+        mProgramAdapter.notifyDataSetChanged();
+    }
+
+    // Update interface
+    private void updateProgram(int progId) {
+        Program program = mBddProgramClass.getProgramsById(Integer.toString(progId));
+
+        for (int i = 0; i < mProgramList.size(); i++) {
+            if (mProgramList.get(i).getId() == progId) {
+                mProgramList.remove(i);
+                mProgramList.add(i, program);
+            }
+        }
+
         mProgramAdapter.notifyDataSetChanged();
     }
 
